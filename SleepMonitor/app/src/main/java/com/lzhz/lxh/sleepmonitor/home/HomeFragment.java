@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.home.activity.AlarmActivity;
+import com.lzhz.lxh.sleepmonitor.home.bluetooth.BlueToothActivity;
+import com.lzhz.lxh.sleepmonitor.relatives.InformationActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,10 +23,12 @@ import butterknife.Unbinder;
  * 邮箱：15911638454@163.com
  */
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.ib_alarm)
     ImageView ibAlarm;
     Unbinder unbinder;
+    @BindView(R.id.ib_buletooth)
+    ImageView ibBuletooth;
 
     @Nullable
     @Override
@@ -40,6 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private void init() {
         ibAlarm.setOnClickListener(this);
+        ibBuletooth.setOnClickListener(this);
     }
 
 
@@ -51,10 +56,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.ib_alarm:
                 Intent intent = new Intent(getActivity(), AlarmActivity.class);
                 startActivity(intent);
+                break;
+                case R.id.ib_buletooth:
+
+                startActivity(new Intent(getActivity(), BlueToothActivity.class));
                 break;
         }
     }

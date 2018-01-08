@@ -13,7 +13,7 @@ class AddAlarmActivity extends BaseActivity{
 
     @Override
     public void initViews() {
-        setContentView(R.layout.add_alarm_activity);
+        setContent(R.layout.add_alarm_activity);
     }
     @Override
     public void initData() {

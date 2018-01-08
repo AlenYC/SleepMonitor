@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lzhz.lxh.sleepmonitor.MainActivity;
@@ -34,22 +35,16 @@ import butterknife.ButterKnife;
  * 闹钟页面
  */
 
-public class AlarmActivity extends BaseActivity implements SwipeItemClickListener,View.OnClickListener {
-    @BindView(R.id.ib_top_left)
-    ImageButton ibTopLeft;
-    @BindView(R.id.tv_top_title)
-    TextView tvTopTitle;
-    @BindView(R.id.ib_top_rigth)
-    Button ibTopRigth;
+public class AlarmActivity extends BaseActivity implements SwipeItemClickListener{
+
     @BindView(R.id.smrv_alarm_list)
     SwipeMenuRecyclerView smrvAlarmList;
     private ShowAlarmAdapter adapter;
     private List<AddAlarmBean> list;
-
     @Override
     public void setRootView() {
 
-        setContentView(R.layout.alarm_activity);
+        setContent(R.layout.alarm_activity);
     }
 
     @Override
@@ -57,10 +52,11 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
 
     }
 
+
+
     @Override
     public void initViews() {
-        tvTopTitle.setText("闹钟");
-        ibTopRigth.setText("编辑");
+
         list = new ArrayList<AddAlarmBean>();
         list.add(new AddAlarmBean("07:30", new ArrayList<String>(), true));
         list.add(new AddAlarmBean("08:30", new ArrayList<String>(), true));
@@ -111,18 +107,18 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
-
     @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.ib_top_left:
-                AlarmActivity.this.finish();
-                break;
-                case R.id.ib_top_rigth:
-                    Intent intent = new Intent();
-                    intent.setClass(AlarmActivity.this, AddAlarmActivity.class);
-                    startActivity(intent);
-                break;
-        }
+    public void getCenTitle(ImageView ivLeft, TextView tvTitle, TextView tvRight) {
+        tvTitle.setText("闹钟");
+        tvRight.setText("编辑");
+        tvRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(AlarmActivity.this, AddAlarmActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }

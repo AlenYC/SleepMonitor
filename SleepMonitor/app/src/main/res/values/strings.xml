@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">SleepMonitor</string>
+    <string name="app_name">智能枕</string>
     <string name="ic_plm">个人信息修改</string>
     <string name="ic_version_information">版本信息</string>
     <string name="ic_user_feedback">用户反馈</string>
     <string name="ic_usinghelp">使用帮助</string>
     <string name="ic_about_us">关于我们</string>
     <string name="ic_log_out">退出登录</string>
+    <string name="grxxxg">编辑个人信息</string>
+    <string name="save">保存</string>
+    <string name="tv_information">消息</string>
 </resources>

@@ -2,11 +2,17 @@ package com.lzhz.lxh.sleepmonitor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.decompression.DecompressionFragment;
@@ -19,27 +25,27 @@ import com.lzhz.lxh.sleepmonitor.sideslip.VersionsActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    ViewPager viewPager;
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.viewpager)
-    ViewPager viewpager;
+    ViewPager viewPager;
     @BindView(R.id.nav_view)
     NavigationView navView;
 
+
+
     @Override
-    public void setRootView() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        initViews();
+        viewPager.setCurrentItem(0);
     }
-    private void getHead(){
 
-    }
-
-    @Override
     public void initViews() {
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
         if (viewPager != null) {
 
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -68,10 +74,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         navView.setNavigationItemSelectedListener(this);
     }
 
-    @Override
-    public void initData() {
-        super.initData();
-    }
 
 
     private void setupViewPager(ViewPager viewPager) {
@@ -102,12 +104,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

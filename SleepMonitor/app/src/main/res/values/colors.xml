@@ -14,4 +14,6 @@
 
     <color name="red_normal">#FF0000</color>
     <color name="red_pressed">#FF6666</color>
+    <color name="tv_danse">#84899C</color>
+    <color name="tv_black">#242A4D</color>
 </resources>

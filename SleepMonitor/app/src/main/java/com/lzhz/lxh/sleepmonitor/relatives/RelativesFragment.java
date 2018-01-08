@@ -1,6 +1,7 @@
 package com.lzhz.lxh.sleepmonitor.relatives;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -61,6 +62,12 @@ public class RelativesFragment extends Fragment {
         };
         relList.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
         relList.setAdapter(adapter);
+        adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(RecyclerView parent, View view, int position) {
+                getActivity().startActivity(new Intent(getActivity(),InformationActivity.class));
+            }
+        });
     }
 
     private void initData() {

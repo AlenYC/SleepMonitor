@@ -14,13 +14,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
-        <include layout="@layout/head"/>
-
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="68dp"
         stv:sLeftTopTextString="头像"
+        app:sLeftTopTextColor="@color/tv_danse"
         stv:sLeftViewGravity="left_center"
         stv:sRightIconRes="@mipmap/back_faxian3x"
         stv:sRightTvDrawableRight="@mipmap/user2x" />
@@ -33,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:sLeftTextString="昵称"
+        app:sLeftTextColor="@color/tv_danse"
         stv:sCenterTopTextString="天龙！！"
         stv:sLeftViewGravity="left_center"
         stv:sLeftViewWidth="60dp"
@@ -48,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:sLeftTextString="姓名"
+            app:sLeftTextColor="@color/tv_danse"
             stv:sCenterTopTextString="田龙"
             stv:sLeftViewGravity="left_center"
             stv:sLeftViewWidth="60dp"
@@ -62,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:sLeftTextString="手机"
+            app:sLeftTextColor="@color/tv_danse"
             stv:sCenterTopTextString="15685445844"
             stv:sLeftViewGravity="left_center"
             stv:sLeftViewWidth="60dp"
@@ -76,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:sLeftTextString="性别"
+            app:sLeftTextColor="@color/tv_danse"
             stv:sCenterTopTextString="男"
             stv:sLeftViewGravity="left_center"
             stv:sLeftViewWidth="60dp"
@@ -96,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:sLeftTextString="身高"
+            app:sLeftTextColor="@color/tv_danse"
             stv:sCenterTopTextString="未设置"
             stv:sLeftViewGravity="left_center"
             stv:sLeftViewWidth="60dp"
@@ -109,6 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:sLeftTextString="体重"
+            app:sLeftTextColor="@color/tv_danse"
             stv:sCenterTopTextString="未设置"
             stv:sLeftViewGravity="left_center"
             stv:sLeftViewWidth="60dp"
@@ -122,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:sLeftTextString="鼾史"
+            app:sLeftTextColor="@color/tv_danse"
             stv:sCenterTopTextString="保密"
             stv:sLeftViewGravity="left_center"
             stv:sLeftViewWidth="60dp"
@@ -142,6 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:sLeftTextString="生日"
+            app:sLeftTextColor="@color/tv_danse"
             stv:sCenterTopTextString="未设置"
             stv:sLeftViewGravity="left_center"
             stv:sLeftViewWidth="60dp"

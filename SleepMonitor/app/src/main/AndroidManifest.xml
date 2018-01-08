@@ -24,11 +24,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.BaseActivity" />
         <activity android:name=".home.activity.AlarmActivity" />
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".sideslip.PersonalDetailsActivity"></activity>
-        <activity android:name=".sideslip.VersionsActivity"></activity>
-    </application>
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".sideslip.PersonalDetailsActivity" />
+        <activity android:name=".sideslip.VersionsActivity" />
+        <activity android:name=".relatives.InformationActivity" />
+        <activity android:name=".home.bluetooth.BlueToothActivity"></activity>
 
+        <service
+            android:name="com.inuker.bluetooth.library.BluetoothService" />
+    </application>
+   <!-- 蓝牙权限-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
 </manifest>

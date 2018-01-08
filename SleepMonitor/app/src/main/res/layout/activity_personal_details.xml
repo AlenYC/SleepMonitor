@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lzhz.lxh.sleepmonitor.sideslip.PersonalDetailsActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <include layout="@layout/head"/>
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        stv:sLeftTopTextString="头像"
+        stv:sLeftViewGravity="left_center"
+        stv:sRightIconRes="@mipmap/back_faxian3x"
+        stv:sRightTvDrawableRight="@mipmap/user2x" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dibu" />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:sLeftTextString="昵称"
+        stv:sCenterTopTextString="天龙！！"
+        stv:sLeftViewGravity="left_center"
+        stv:sLeftViewWidth="60dp"
+        stv:sCenterViewGravity="left_center"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="姓名"
+            stv:sCenterTopTextString="田龙"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="手机"
+            stv:sCenterTopTextString="15685445844"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="性别"
+            stv:sCenterTopTextString="男"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            app:sRightIconRes="@mipmap/back_faxian3x"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu"
+            android:layout_marginTop="10dp"
+            />
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="身高"
+            stv:sCenterTopTextString="未设置"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="体重"
+            stv:sCenterTopTextString="未设置"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="鼾史"
+            stv:sCenterTopTextString="保密"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu"
+            android:layout_marginTop="10dp"
+            />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="生日"
+            stv:sCenterTopTextString="未设置"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+    </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

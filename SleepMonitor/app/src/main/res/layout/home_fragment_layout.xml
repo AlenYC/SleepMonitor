@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top"
+        android:background="?attr/colorPrimaryDark"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/size16"
+        android:paddingRight="@dimen/size16"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <ImageView
+            android:id="@+id/ib_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:src="@mipmap/user_icon3x" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/ib_user"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/home_top_dip10"
+            >
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@mipmap/logo2193x" />
+
+        </RelativeLayout>
+
+
+
+        <ImageView
+            android:id="@+id/ib_alarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/home_top_dip6"
+            android:clickable="true"
+            android:layout_toLeftOf="@+id/ib_music"
+            android:src="@mipmap/alarm_ico3x" />
+
+        <ImageView
+            android:id="@+id/ib_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/home_top_dip6"
+            android:layout_toLeftOf="@+id/ib_buletooth"
+            android:src="@mipmap/music_ico3x" />
+
+        <ImageView
+            android:id="@+id/ib_buletooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/blue_tooth3x" />
+
+    </RelativeLayout>
+
+</LinearLayout>

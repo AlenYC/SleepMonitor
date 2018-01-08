@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.lzhz.lxh.sleepmonitor.sideslip.VersionsActivity"
+    android:orientation="vertical"
+    >
+    <include layout="@layout/head"/>
+
+   <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="150dp">
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@mipmap/logo_banben3xx"
+           />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="固件版本"
+            stv:sCenterTopTextString="V1.0.0"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            app:sRightIconRes="@mipmap/dui"
+            app:sRightTextString="发现新版本"
+            app:sRightTextSize="@dimen/size14"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="APP版本"
+            stv:sCenterTopTextString="V1.0.0"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:sLeftTextString="硬件版本"
+            stv:sCenterTopTextString="V1.0.0"
+            stv:sLeftViewGravity="left_center"
+            stv:sLeftViewWidth="60dp"
+            stv:sCenterViewGravity="left_center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="@dimen/size18"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="量子智慧科技公司 版权所有@ 2015-2017"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="粤ICP备15548485-1"
+            />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SleepMonitor</string>
+    <string name="ic_plm">个人信息修改</string>
+    <string name="ic_version_information">版本信息</string>
+    <string name="ic_user_feedback">用户反馈</string>
+    <string name="ic_usinghelp">使用帮助</string>
+    <string name="ic_about_us">关于我们</string>
+    <string name="ic_log_out">退出登录</string>
+</resources>

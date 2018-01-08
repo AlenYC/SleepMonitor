@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ycl.framework.view.ptrview.FixRequestDisallowTouchEventPtrFrameLayout
+    android:id="@+id/ptr_frame_refresh_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ptr_frame_refresh_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"/>
+</com.ycl.framework.view.ptrview.FixRequestDisallowTouchEventPtrFrameLayout>
+

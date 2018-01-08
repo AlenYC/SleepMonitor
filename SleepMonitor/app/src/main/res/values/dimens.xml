@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<resources>
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
+    <dimen name="size18">18sp</dimen>
+    <dimen name="size14">14sp</dimen>
+    <dimen name="size16">16sp</dimen>
+    <dimen name="dip60">60dp</dimen>
+    <dimen name="top">60dp</dimen>
+    <dimen name="home_top_dip6">6dp</dimen>
+    <dimen name="home_top_dip10">10dp</dimen>
+    <dimen name="dp_70">70dp</dimen>
+</resources>

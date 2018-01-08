@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btm_nav_item1"
+        android:icon="@drawable/home_buttom_selector"
+        android:title="首页" />
+
+    <item
+    android:id="@+id/btm_nav_item2"
+    android:icon="@mipmap/analsy_ico3x"
+    android:title="分析" />
+
+    <item
+        android:id="@+id/btm_nav_item3"
+        android:icon="@mipmap/minus_ico3x"
+        android:title="解压" />
+
+    <item
+        android:id="@+id/btm_nav_item4"
+        android:icon="@mipmap/close_peo_ico3x"
+        android:title="亲友" />
+</menu>
+

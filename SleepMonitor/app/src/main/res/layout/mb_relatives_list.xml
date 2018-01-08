@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    >
+    <!--android:background="@drawable/check_bg_selector"-->
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_lift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/dad3x" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="爸爸"
+                android:textSize="@dimen/size18" />
+
+            <TextView
+                android:id="@+id/tv_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:text="昨晚睡眠质量优"
+                android:textSize="@dimen/size14" />
+
+            <TextView
+                android:id="@+id/tv_sm_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_toRightOf="@+id/tv_quality"
+                android:text="（深度睡眠2小时13分钟）"
+                android:textSize="@dimen/size14" />
+
+            <ImageView
+                android:id="@+id/iv_tup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_quality"
+                android:src="@mipmap/quxian3x" />
+
+            <TextView
+                android:id="@+id/tv_shuij_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_tup"
+                android:text="凌晨10.10"
+                android:textSize="@dimen/size14" />
+
+            <TextView
+                android:id="@+id/tv_qic_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/iv_tup"
+                android:text="凌晨10.10"
+                android:textSize="@dimen/size14" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dibu"
+        />
+    <TextView
+        android:id="@+id/tv_xian"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dibu"
+        />
+
+</LinearLayout>

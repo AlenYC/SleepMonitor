@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <include layout="@layout/head"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                stv:sLeftIconRes="@mipmap/alarm_ico2x"
+                stv:sLeftTextString="止汗功能"
+                stv:sRightViewType="switchBtn"
+                stv:sSwitchIsChecked="true"
+                stv:sSwitchMinWidth="36dp"
+                stv:sThumbResource="@drawable/thumb"
+                stv:sTrackResource="@drawable/track"></com.allen.library.SuperTextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_jiare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_bujiare"
+                    android:layout_alignBottom="@+id/tv_bujiare"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginRight="80dp"
+                    android:drawablePadding="4dp"
+                    android:drawableTop="@mipmap/dahuo13x"
+                    android:gravity="center"
+                    android:text="加热"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_bujiare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_toRightOf="@+id/tv_jiare"
+                    android:drawablePadding="4dp"
+                    android:drawableTop="@mipmap/dahuo03x"
+                    android:gravity="center"
+                    android:text="不加热"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dibu" />
+
+            <TextView
+                android:id="@+id/tv_xian"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/dibu" />
+
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                stv:sLeftIconRes="@mipmap/alarm_ico2x"
+                stv:sLeftTextString="热敷功能"
+                stv:sRightViewType="switchBtn"
+                stv:sSwitchIsChecked="true"
+                stv:sSwitchMinWidth="36dp"
+                stv:sThumbResource="@drawable/thumb"
+                stv:sTrackResource="@drawable/track"></com.allen.library.SuperTextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/dibu" />
+
+                <SeekBar
+                    android:id="@+id/sb_jindu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:progressDrawable="@mipmap/quxian3x"
+                    android:thumb="@mipmap/alarm_ico2x" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/sb_jindu"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="低" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sb_jindu"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="中" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/sb_jindu"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="高" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dibu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@+id/tv_jiare"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/alarm_ico3x"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:text="定时2小时"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@+id/tv_jiare"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/alarm_ico3x"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:text="00'00'"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dibu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/dibu" />
+
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                stv:sLeftIconRes="@mipmap/alarm_ico2x"
+                stv:sLeftTextString="按摩功能"
+                stv:sRightViewType="switchBtn"
+                stv:sSwitchIsChecked="true"
+                stv:sSwitchMinWidth="36dp"
+                stv:sThumbResource="@drawable/thumb"
+                stv:sTrackResource="@drawable/track" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="14dp"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@+id/tv_jiare"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/alarm_ico3x"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:text="定时设置"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@+id/tv_jiare"
+                    android:layout_weight="1"
+                    android:drawableLeft="@mipmap/alarm_ico3x"
+                    android:drawablePadding="4dp"
+
+                    android:gravity="center_vertical"
+                    android:text="00'00'"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dibu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/dibu" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                stv:sLeftIconRes="@mipmap/alarm_ico2x"
+                stv:sLeftTextString="颈部热敷"
+                stv:sRightViewType="switchBtn"
+                stv:sSwitchIsChecked="true"
+                stv:sSwitchMinWidth="36dp"
+                stv:sThumbResource="@drawable/thumb"
+                stv:sTrackResource="@drawable/track" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dibu" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <SeekBar
+                    android:id="@+id/sb_jindu1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:progressDrawable="@mipmap/quxian3x"
+                    android:thumb="@mipmap/alarm_ico2x" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@id/sb_jindu1"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="低" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sb_jindu1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="中" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/sb_jindu1"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="高" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dibu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/dibu" />
+
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="50dp"
+                stv:sLeftIconRes="@mipmap/alarm_ico2x"
+                stv:sLeftTextString="气囊按摩"
+                stv:sRightViewType="switchBtn"
+                stv:sSwitchIsChecked="true"
+                stv:sSwitchMinWidth="36dp"
+                stv:sThumbResource="@drawable/thumb"
+                stv:sTrackResource="@drawable/track" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

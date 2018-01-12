@@ -41,6 +41,8 @@ dependencies {
 
     //蓝牙
     compile 'com.inuker.bluetooth:library:1.4.0'
+    //权限管理
+    compile 'me.weyye.hipermission:library:1.0.7'
 }
 repositories {
     allprojects {

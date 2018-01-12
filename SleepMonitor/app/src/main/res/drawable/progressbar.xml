@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+    对layer-list样式，是按照顺序堆叠的，所以最上层的放在最后面，而且如果设置了progressDrawable
+    的属性，再去设置progressbar的background是没有效果的
+    -->
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="rectangle" >
+            <!-- 填充的颜色 -->
+            <solid android:color="@color/white" />
+
+            <!-- padding：Button里面的文字与Button边界的间隔 -->
+
+            <!--设置边框线的宽度和颜色-->
+            <stroke android:width="0.5dp" android:color="@color/seek_lu" />
+        </shape>
+    </item>
+    <item
+        android:id="@android:id/secondaryProgress"
+        >
+        <clip>
+            <shape>
+                <solid android:color="@color/seek_lu" ></solid>
+            </shape>
+
+        </clip>
+    </item>
+</layer-list>

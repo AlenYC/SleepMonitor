@@ -1,91 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/bg_color"
     android:orientation="vertical"
     >
-    <!--android:background="@drawable/check_bg_selector"-->
     <LinearLayout
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="16dp"
+        >
         <ImageView
-            android:id="@+id/iv_lift"
+            android:id="@+id/iv_home_top"
             android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:src="@mipmap/dad3x" />
+            android:src="@mipmap/zhishu3x"/>
 
-        <RelativeLayout
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="爸爸"
-                android:textSize="@dimen/size18" />
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
 
-            <TextView
-                android:id="@+id/tv_quality"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_name"
-                android:text="昨晚睡眠质量优"
-                android:textSize="@dimen/size14" />
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="我的睡眠"
+                        android:textColor="#84899B"
+                        android:textSize="@dimen/size18" />
 
-            <TextView
-                android:id="@+id/tv_sm_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_name"
-                android:layout_toRightOf="@+id/tv_quality"
-                android:text="（深度睡眠2小时13分钟）"
-                android:textSize="@dimen/size14" />
+                    <TextView
+                        android:id="@+id/tv_smzl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="睡眠质量优"
+                        android:layout_below="@+id/tv_name"
+                        android:textColor="#7070C5"
+                        android:textSize="@dimen/size14" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="（深度睡眠1小时20分钟）"
+                        android:layout_toRightOf="@+id/tv_smzl"
+                        android:layout_below="@+id/tv_name"
+                        android:textColor="@color/tv_danse"
+                        android:textSize="@dimen/size14" />
+                </RelativeLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/back_faxian3x"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/iv_tup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_quality"
-                android:src="@mipmap/quxian3x" />
+            <com.lzhz.lxh.sleepmonitor.tools.view.LinsView
+                android:id="@+id/lv_rela"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:lins1Color="@color/lins_hui"
+                app:lins2Color="@color/lins_lan"
+                app:linsSize="14sp"
+                />
 
-            <TextView
-                android:id="@+id/tv_shuij_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_tup"
-                android:text="凌晨10.10"
-                android:textSize="@dimen/size14" />
 
-            <TextView
-                android:id="@+id/tv_qic_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/iv_tup"
-                android:text="凌晨10.10"
-                android:textSize="@dimen/size14" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/tv_danse"
+                    android:textSize="@dimen/size12"
+                    android:text="凌晨12.16" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="早上8：20"
+                    android:textColor="@color/tv_danse"
+                    android:textSize="@dimen/size12"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:background="@color/dibu"
         />
-    <TextView
-        android:id="@+id/tv_xian"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/dibu"
-        />
-
 </LinearLayout>

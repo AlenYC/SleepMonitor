@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/top"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:background="?attr/colorPrimaryDark"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/size16"
-        android:paddingRight="@dimen/size16"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        >
 
         <ImageView
             android:id="@+id/ib_user"
@@ -32,12 +32,18 @@
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:layout_marginLeft="10dp"
                 android:src="@mipmap/logo2193x" />
 
         </RelativeLayout>
 
-
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ib_user"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/home_top_dip10"
+            >
 
         <ImageView
             android:id="@+id/ib_alarm"
@@ -58,14 +64,79 @@
             android:layout_toLeftOf="@+id/ib_buletooth"
             android:src="@mipmap/music_ico3x" />
 
+
+
         <ImageView
             android:id="@+id/ib_buletooth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_centerVertical="true"
             android:src="@mipmap/blue_tooth3x" />
+   </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
-    </RelativeLayout>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="#232C49"
+        app:layout_scrollFlags="scroll"
+        android:scaleType="centerCrop"
+        app:layout_collapseMode="parallax"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/quxian3x"
+            android:layout_marginTop="45dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5月30日 检测心率90次分"
+            android:textSize="@dimen/size12"
+            android:textColor="@color/home_lan"
+            android:layout_marginTop="14dp"
+            />
+
+        <Button
+            android:id="@+id/bt_ljjc"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="立即检测"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:textSize="@dimen/size14"
+            android:textColor="@color/white"
+            android:background="@drawable/selector_buttom_home"
+            />
+
+    </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_home_list"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>

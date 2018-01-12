@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="?attr/colorPrimaryDark"
+        >
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:text="分析"
+            android:textColor="@color/title_color"
+            android:textSize="18sp" />
+    </android.support.v7.widget.Toolbar>
+<ScrollView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/histogram_bg_color"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5月29统计"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size14"
+                android:layout_marginTop="20dp"
+                />
+            <com.lzhz.lxh.sleepmonitor.tools.view.RectangleView
+                android:id="@+id/rectangle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/histogram_bg_color"
+                app:TextTimeSize="12sp"
+                app:TimeColor="@color/tv_an_time"
+                app:d1Color="@color/d1"
+                app:d2Color="@color/d2"
+                app:d3Color="@color/white" />
+
+        </LinearLayout>
+
+
+        <include layout="@layout/detection_sm_layout"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+        <com.lzhz.lxh.sleepmonitor.tools.view.RoundWireView
+            android:id="@+id/rwv_round"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white"
+            app:TextMean="76/分"
+            app:TextMinuteMean="78/分"
+            app:TextTitle="呼吸正常率"
+            app:TextTitleColor="@color/tv_an_lan"
+            app:TextTitleSize="16dp"
+            app:lineColor="@color/round1_xian_color"
+            app:lineGrayColor="@color/tv_danse"
+            app:lineGraySize="0.5dp"
+            app:linePointColor="@color/chart_top_color"
+            app:linePointRadius="5dp"
+            app:lineSize="6dp"
+            app:textGrayColor="@color/chart_top_color"
+            app:textGraySize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+        <com.lzhz.lxh.sleepmonitor.tools.view.RoundWireView
+            android:id="@+id/rwv_round1"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white"
+            app:TextMean="75/分"
+            app:TextMinuteMean="82/分"
+            app:TextTitle="心率"
+            app:TextTitleColor="@color/tv_an_danhong"
+            app:TextTitleSize="16dp"
+            app:lineColor="@color/round_xian_color"
+            app:lineGrayColor="@color/tv_danse"
+            app:lineGraySize="0.5dp"
+            app:linePointColor="@color/chart_top_color"
+            app:linePointRadius="5dp"
+            app:lineSize="6dp"
+            app:textGrayColor="@color/chart_top_color"
+            app:textGraySize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+        <com.lzhz.lxh.sleepmonitor.tools.view.ChartView
+            android:id="@+id/cv_line"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white"
+            app:TextMean="72/分"
+            app:TextMinuteMean="58.5/分"
+            app:TextTitle="体动翻身"
+            app:TextTitleColor="@color/tv_an_td"
+            app:TextTitleSize="16dp"
+            app:lineColor="@color/colorAccent"
+            app:lineGrayColor="@color/tv_danse"
+            app:lineGraySize="0.5dp"
+            app:linePointColor="@color/chart_top_color"
+            app:linePointRadius="5dp"
+            app:lineSize="2dp"
+            app:textGrayColor="@color/chart_top_color"
+            app:textGraySize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

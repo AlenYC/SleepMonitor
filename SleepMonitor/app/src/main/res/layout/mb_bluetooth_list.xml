@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    >
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    />
+
+    <TextView
+        android:id="@+id/tv_xian"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dibu"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <com.allen.library.SuperTextView
+            android:id="@+id/buletooth_stv"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            stv:sLeftTextColor="@color/tv_danse"
+            stv:sLeftTextSize="16sp"
+
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

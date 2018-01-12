@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="?attr/colorPrimaryDark"
+        >
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:text="分析"
+            android:textColor="@color/title_color"
+            android:textSize="18sp" />
+    </android.support.v7.widget.Toolbar>
+<ScrollView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/histogram_bg_color"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:src="@mipmap/xiao_jiantou3x" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="昨天"
+                    android:textColor="@color/title_color" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@mipmap/next2x" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="离床凌晨1:10 - 早上6：30"
+                android:textColor="@color/white" />
+
+            <com.lzhz.lxh.sleepmonitor.tools.view.HistogramView
+                android:id="@+id/hv_count"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:background="@color/histogram_bg_color"
+                app:lineGrayColor="@color/histogram_2_color"
+                app:lineGraySize="5dp"
+                app:textGrayColor="@color/histogram_1_color" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="凌晨12：15"
+                    android:textColor="@color/tv_an_time" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="早上6:48"
+                    android:textColor="@color/tv_an_time" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+        <com.lzhz.lxh.sleepmonitor.tools.view.RoundWireView
+            android:id="@+id/rwv_round"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white"
+            app:TextMean="76/分"
+            app:TextMinuteMean="78/分"
+            app:TextTitle="呼吸正常率"
+            app:TextTitleColor="@color/tv_an_lan"
+            app:TextTitleSize="16dp"
+            app:lineColor="@color/round1_xian_color"
+            app:lineGrayColor="@color/tv_danse"
+            app:lineGraySize="0.5dp"
+            app:linePointColor="@color/chart_top_color"
+            app:linePointRadius="5dp"
+            app:lineSize="6dp"
+            app:textGrayColor="@color/chart_top_color"
+            app:textGraySize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+        <com.lzhz.lxh.sleepmonitor.tools.view.RoundWireView
+            android:id="@+id/rwv_round1"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white"
+            app:TextMean="75/分"
+            app:TextMinuteMean="82/分"
+            app:TextTitle="心率"
+            app:TextTitleColor="@color/tv_an_danhong"
+            app:TextTitleSize="16dp"
+            app:lineColor="@color/round_xian_color"
+            app:lineGrayColor="@color/tv_danse"
+            app:lineGraySize="0.5dp"
+            app:linePointColor="@color/chart_top_color"
+            app:linePointRadius="5dp"
+            app:lineSize="6dp"
+            app:textGrayColor="@color/chart_top_color"
+            app:textGraySize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+        <com.lzhz.lxh.sleepmonitor.tools.view.ChartView
+            android:id="@+id/cv_line"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white"
+            app:TextMean="72/分"
+            app:TextMinuteMean="58.5/分"
+            app:TextTitle="体动翻身"
+            app:TextTitleColor="@color/tv_an_td"
+            app:TextTitleSize="16dp"
+            app:lineColor="@color/colorAccent"
+            app:lineGrayColor="@color/tv_danse"
+            app:lineGraySize="0.5dp"
+            app:linePointColor="@color/chart_top_color"
+            app:linePointRadius="5dp"
+            app:lineSize="2dp"
+            app:textGrayColor="@color/chart_top_color"
+            app:textGraySize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dibu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dibu" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="98.28"
+                android:gravity="center_vertical"
+                android:textColor="@color/shuzi"
+                android:textSize="60sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/selector_buttom_tj"
+                android:drawableLeft="@mipmap/tonji_icon3x"
+                android:layout_marginTop="23dp"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:text="统计"
+                android:textColor="@color/tongji"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="睡眠质量测量分"
+            android:drawableLeft="@mipmap/pen_icon3x"
+            android:paddingLeft="20dp"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="尝试本产品的解压功能，生活中应适当运动放松身心。"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_c3"
+            android:paddingLeft="20dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

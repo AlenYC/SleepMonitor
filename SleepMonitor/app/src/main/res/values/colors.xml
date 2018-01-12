@@ -16,4 +16,28 @@
     <color name="red_pressed">#FF6666</color>
     <color name="tv_danse">#84899C</color>
     <color name="tv_black">#242A4D</color>
+
+    <color name="device_detail_service">#cccccc</color>
+    <color name="device_detail_character">#ffffff</color>
+
+    <color name="chart_top_color">#F5703C</color>
+    <color name="histogram_1_color">#5755A0</color>
+    <color name="histogram_2_color">#4681B9</color>
+    <color name="histogram_bg_color">#303B5B</color>
+    <color name="round_xian_color">#ED557C</color>
+    <color name="round1_xian_color">#6C6AC3</color>
+    <color name="tv_an_time">#426388</color>
+    <color name="tv_an_danhong">#E8587A</color>
+    <color name="tv_an_lan">#6D6AC2</color>
+    <color name="tv_an_td">#EF7546</color>
+    <color name="tongji">#6299D0</color>
+    <color name="seek_lu">#4BBC88</color>
+    <color name="shuzi">#303B5B</color>
+    <color name="text_c3">#C3C3CD</color>
+    <color name="lins_hui">#D0E2F2</color>
+    <color name="lins_lan">#A5B6E8</color>
+    <color name="home_lan">#86BCED</color>
+    <color name="d1">#5755A0</color>
+    <color name="d2">#4681B9</color>
+    <color name="hei3">#2F3D59</color>
 </resources>

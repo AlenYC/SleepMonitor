@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="16dp"
+        >
+    <ImageView
+        android:id="@+id/iv_home_top"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/zhishu3x"/>
+
+      <LinearLayout
+          android:layout_marginLeft="10dp"
+          android:layout_marginTop="6dp"
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              >
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  >
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="4dp"
+                      android:text="健康指数评分为89.34"
+                      android:textSize="@dimen/size14" />
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="4dp"
+                      android:text="更新时间为早上8:20"
+                      android:textColor="@color/tv_danse"
+                      android:textSize="@dimen/size14" />
+              </LinearLayout>
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@mipmap/back_faxian3x"
+                  android:layout_centerVertical="true"
+                  android:layout_alignParentRight="true"
+                  />
+          </RelativeLayout>
+         
+          <com.lzhz.lxh.sleepmonitor.tools.view.LinsView
+              android:id="@+id/lv_home"
+              android:layout_width="match_parent"
+              android:layout_height="16dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="10dp"
+              app:lins1Color="@color/lins_hui"
+              app:lins2Color="@color/lins_lan"
+              android:visibility="gone"
+              app:linsSize="14sp"
+              />
+
+          <ProgressBar
+              android:id="@+id/sb_jindu"
+              android:layout_width="match_parent"
+              android:layout_height="16dp"
+              style="?android:attr/progressBarStyleHorizontal"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="10dp"
+              android:progress="60"
+              android:max="100"
+              android:progressDrawable="@drawable/progressbar"
+              />
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="36dp">
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentStart="true"
+                  android:layout_alignParentTop="true"
+                  android:textColor="@color/tv_danse"
+                  android:textSize="@dimen/size12"
+                  android:text="凌晨12.16" />
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="早上8：20"
+                  android:textColor="@color/tv_danse"
+                  android:textSize="@dimen/size12"
+                  android:layout_alignParentRight="true"
+                  />
+          </RelativeLayout>
+      </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dibu"
+        />
+</LinearLayout>

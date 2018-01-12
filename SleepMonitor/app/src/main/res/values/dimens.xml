@@ -10,4 +10,6 @@
     <dimen name="home_top_dip6">6dp</dimen>
     <dimen name="home_top_dip10">10dp</dimen>
     <dimen name="dp_70">70dp</dimen>
+    <dimen name="size12">12sp</dimen>
+    <dimen name="dp12">12dp</dimen>
 </resources>

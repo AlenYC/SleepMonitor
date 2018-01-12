@@ -30,6 +30,10 @@
         <activity android:name=".sideslip.VersionsActivity" />
         <activity android:name=".relatives.InformationActivity" />
         <activity android:name=".home.bluetooth.BlueToothActivity"></activity>
+        <activity android:name=".home.bluetooth.activity.DeviceDetailActivity"></activity>
+        <activity android:name=".home.activity.DetectionActivity">
+
+        </activity>
 
         <service
             android:name="com.inuker.bluetooth.library.BluetoothService" />

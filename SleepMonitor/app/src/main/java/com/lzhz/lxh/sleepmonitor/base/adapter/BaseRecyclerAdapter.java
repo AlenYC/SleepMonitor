@@ -74,17 +74,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
             this.list = list;
             this.itemLayoutId = itemLayoutId;
             inflater = LayoutInflater.from(context);
-
-            //        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            //            @Override
-            //            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            //                super.onScrollStateChanged(recyclerView, newState);
-            //                isScrolling = !(newState == RecyclerView.SCROLL_STATE_IDLE);
-            //                if (!isScrolling) {
-            //                    notifyDataSetChanged();
-            //                }
-            //            }
-            //        });
         }
 
         @Override

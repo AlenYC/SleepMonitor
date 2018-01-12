@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lzhz.lxh.sleepmonitor.analyzed.AnalyzeDetailsFragment;
+import com.lzhz.lxh.sleepmonitor.analyzed.AnalyzedFragment;
 import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.decompression.DecompressionFragment;
 import com.lzhz.lxh.sleepmonitor.home.HomeFragment;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             break;
                         case R.id.btm_nav_item2:
                             viewPager.setCurrentItem(1);
+                            break;
                         case R.id.btm_nav_item3:
                             viewPager.setCurrentItem(2);
                             break;
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setupViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new HomeFragment());
+        adapter.addFragment(new AnalyzeDetailsFragment());
         adapter.addFragment(new DecompressionFragment());
         adapter.addFragment(new RelativesFragment());
         viewPager.setAdapter(adapter);

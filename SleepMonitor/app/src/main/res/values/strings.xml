@@ -9,4 +9,10 @@
     <string name="grxxxg">编辑个人信息</string>
     <string name="save">保存</string>
     <string name="tv_information">消息</string>
+    <string name="permission_on_close">用户关闭权限申请</string>
+    <string name="permission_completed">所有权限申请完成</string>
+    <string name="deny">权限被拒绝</string>
+    <string name="connecting">正在连接</string>
+    <string name="deface">情景</string>
+    <string name="qingy">亲友</string>
 </resources>

@@ -1,19 +1,33 @@
 package com.lzhz.lxh.sleepmonitor.base;
 
+import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.lzhz.lxh.sleepmonitor.MainActivity;
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.base.inter.Y_BaseInterface;
 import com.lzhz.lxh.sleepmonitor.tools.FrameActivityStack;
+import com.lzhz.lxh.sleepmonitor.tools.ToastUtil;
+import com.lzhz.lxh.sleepmonitor.tools.interfacetool.PermissionInter;
+
+import java.security.Permission;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 
 
 public abstract class BaseActivity extends AppCompatActivity implements Y_BaseInterface,View.OnClickListener {
@@ -107,4 +121,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Y_BaseIn
                 break;
         }
     }
+
+
 }

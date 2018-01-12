@@ -3,42 +3,43 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/top"
+    android:layout_height="wrap_content"
     android:paddingLeft="@dimen/size16"
     android:paddingRight="@dimen/size16"
-    android:background="?attr/colorPrimaryDark"
+    android:minHeight="?attr/actionBarSize"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:gravity="center_vertical"
+    android:background="?attr/colorPrimaryDark"
     >
-    <ImageButton
-        android:id="@+id/ib_top_left"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:background="@null"
-        android:layout_centerVertical="true"
-        android:src="@mipmap/back_icon3x" />
-    <TextView
-        android:id="@+id/tv_top_title"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="首  页"
-        android:gravity="center"
-        android:textColor="@color/title_color"
-        android:textSize="@dimen/size18" />
-
-    <Button
-        android:id="@+id/ib_top_rigth"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="@null"
-        android:gravity="center"
-        android:text="编辑"
-        android:textSize="@dimen/size16"
-        />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tl_relat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="?attr/colorPrimaryDark"
+        >
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/back_icon3x"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/title_color"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/iv_right_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:visibility="gone"
+            android:paddingRight="14dp"
+             />
+    </android.support.v7.widget.Toolbar>
 </RelativeLayout>

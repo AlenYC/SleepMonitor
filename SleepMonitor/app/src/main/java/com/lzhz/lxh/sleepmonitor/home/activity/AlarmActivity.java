@@ -6,12 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.lzhz.lxh.sleepmonitor.MainActivity;
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.home.adapter.ShowAlarmAdapter;

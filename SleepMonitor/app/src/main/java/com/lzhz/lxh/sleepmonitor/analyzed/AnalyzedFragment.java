@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.lzhz.lxh.sleepmonitor.MainActivity;
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.tools.view.ChartView;
 import com.lzhz.lxh.sleepmonitor.tools.view.HistogramView;
@@ -40,7 +42,9 @@ public class AnalyzedFragment extends Fragment implements View.OnClickListener {
     RoundWireView hvRoundView;
     @BindView(R.id.rwv_round1)
     RoundWireView rwvRound1;
-
+    @BindView(R.id.tb_statistics)
+    Button tbStatistice;
+    MainActivity mainActivity;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,6 +53,15 @@ public class AnalyzedFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(
                 R.layout.analyzed_fragment_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
+        mainActivity = (MainActivity) getActivity();
+        init();
+        setDate();
+        return view;
+    }
+    private void init(){
+        tbStatistice.setOnClickListener(this);
+    }
+    private void setDate(){
 
         Random random = new Random();
         count = new int[11];
@@ -62,8 +75,6 @@ public class AnalyzedFragment extends Fragment implements View.OnClickListener {
         hvCount.setData(count);
         hvRoundView.setCount(count, date);
         rwvRound1.setCount(count1, date);
-
-        return view;
     }
 
     @Override
@@ -75,6 +86,9 @@ public class AnalyzedFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.tb_statistics:
+                mainActivity.setAnalyzeDetails();
+                break;
         }
     }
 }

@@ -219,12 +219,13 @@ android:layout_height="wrap_content"
                 android:textSize="60sp" />
 
             <Button
+                android:id="@+id/tb_statistics"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="23dp"
                 android:background="@drawable/selector_buttom_tj"
                 android:drawableLeft="@mipmap/tonji_icon3x"
-                android:layout_marginTop="23dp"
                 android:gravity="center"
                 android:paddingLeft="8dp"
                 android:text="统计"

@@ -76,15 +76,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         navView.setNavigationItemSelectedListener(this);
     }
-
+    public void setAnalyze(){
+        viewPager.setCurrentItem(1);
+    }
+    public void setAnalyzeDetails(){
+        viewPager.setCurrentItem(4);
+    }
 
 
     private void setupViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new AnalyzeDetailsFragment());
+        adapter.addFragment(new AnalyzedFragment());
         adapter.addFragment(new DecompressionFragment());
         adapter.addFragment(new RelativesFragment());
+        adapter.addFragment(new AnalyzeDetailsFragment());
         viewPager.setAdapter(adapter);
 
         //viewPager 改变监听
@@ -96,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onPageSelected(int position) {
+                if(position != 4)
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
 

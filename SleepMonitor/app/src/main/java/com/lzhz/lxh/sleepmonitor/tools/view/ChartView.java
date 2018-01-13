@@ -154,7 +154,7 @@ public class ChartView extends View {
         /**
          * 绘制折线
          */
-      if(count.length == 0){
+      if(count == null || count.length == 0){
           return;
       }
       float xHeight = mViewHeight/3;

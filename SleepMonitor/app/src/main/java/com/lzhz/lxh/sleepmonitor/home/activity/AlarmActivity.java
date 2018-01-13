@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,11 +14,14 @@ import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.home.adapter.ShowAlarmAdapter;
 import com.lzhz.lxh.sleepmonitor.home.bean.AddAlarmBean;
 import com.lzhz.lxh.sleepmonitor.tools.DividerItemDecoration;
+import com.lzhz.lxh.sleepmonitor.tools.LogUtils;
+import com.lzhz.lxh.sleepmonitor.tools.ToastUtil;
 import com.yanzhenjie.recyclerview.swipe.SwipeItemClickListener;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
+import com.yanzhenjie.recyclerview.swipe.touch.OnItemStateChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +43,6 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
     private List<AddAlarmBean> list;
     @Override
     public void setRootView() {
-
         setContent(R.layout.alarm_activity);
     }
 
@@ -47,9 +50,6 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
     public void initData() {
 
     }
-
-
-
     @Override
     public void initViews() {
 
@@ -57,6 +57,7 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         list.add(new AddAlarmBean("07:30", new ArrayList<String>(), true));
         list.add(new AddAlarmBean("08:30", new ArrayList<String>(), true));
         list.add(new AddAlarmBean("09:30", new ArrayList<String>(), true));
+
         adapter = new ShowAlarmAdapter(this, R.layout.mb_alarm_list, list);
         smrvAlarmList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         // 如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
@@ -66,10 +67,17 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         smrvAlarmList.setSwipeItemClickListener(this);
         smrvAlarmList.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL_LIST));
-
+        smrvAlarmList.setOnItemStateChangedListener(new OnItemStateChangedListener() {
+            @Override
+            public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
+                LogUtils.i("----"+actionState );
+                smrvAlarmList.invalidate();
+            }
+        });
         smrvAlarmList.setItemViewSwipeEnabled(true);
         smrvAlarmList.setAdapter(adapter);
     }
+
 
     // 创建菜单：
     SwipeMenuCreator mSwipeMenuCreator = new SwipeMenuCreator() {
@@ -78,7 +86,7 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
             int width = getResources().getDimensionPixelSize(R.dimen.dp_70);
             int height = getResources().getDimensionPixelSize(R.dimen.dp_70);
             //  int height = ViewGroup.LayoutParams.MATCH_PARENT;
-            Log.i("height", "--------" + height);
+            {
             SwipeMenuItem deleteItem = new SwipeMenuItem(AlarmActivity.this)
                     .setBackground(R.drawable.selector_red)
                     .setImage(R.mipmap.ic_action_delete)
@@ -87,14 +95,14 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
                     .setWidth(width)
                     .setHeight(height);
             rightMenu.addMenuItem(deleteItem);// 添加菜单到右侧。
-
+            }
         }
     };
 
 
     @Override
     public void onItemClick(View itemView, int position) {
-
+        ToastUtil.showShort(this,position +"aaa");
     }
 
     @Override

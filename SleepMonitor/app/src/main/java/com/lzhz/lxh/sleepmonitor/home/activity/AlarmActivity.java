@@ -5,10 +5,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.home.adapter.ShowAlarmAdapter;
@@ -16,6 +16,7 @@ import com.lzhz.lxh.sleepmonitor.home.bean.AddAlarmBean;
 import com.lzhz.lxh.sleepmonitor.tools.DividerItemDecoration;
 import com.lzhz.lxh.sleepmonitor.tools.LogUtils;
 import com.lzhz.lxh.sleepmonitor.tools.ToastUtil;
+import com.lzhz.lxh.sleepmonitor.tools.view.RecycleViewDivider;
 import com.yanzhenjie.recyclerview.swipe.SwipeItemClickListener;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator;
@@ -61,12 +62,15 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         adapter = new ShowAlarmAdapter(this, R.layout.mb_alarm_list, list);
         smrvAlarmList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         // 如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
-        smrvAlarmList.setHasFixedSize(true);
+        smrvAlarmList.setHasFixedSize(false);
         // 设置监听器。
         smrvAlarmList.setSwipeMenuCreator(mSwipeMenuCreator);
         smrvAlarmList.setSwipeItemClickListener(this);
         smrvAlarmList.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL_LIST));
+
+        smrvAlarmList.addItemDecoration(new RecycleViewDivider(
+                this, LinearLayoutManager.VERTICAL, 30, getResources().getColor(R.color.bg_color)));
         smrvAlarmList.setOnItemStateChangedListener(new OnItemStateChangedListener() {
             @Override
             public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
@@ -74,7 +78,8 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
                 smrvAlarmList.invalidate();
             }
         });
-        smrvAlarmList.setItemViewSwipeEnabled(true);
+        smrvAlarmList.setItemViewSwipeEnabled(false);
+//        smrvAlarmList.setItemViewSwipeEnabled(true);
         smrvAlarmList.setAdapter(adapter);
     }
 
@@ -84,7 +89,6 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         @Override
         public void onCreateMenu(SwipeMenu leftMenu, SwipeMenu rightMenu, int viewType) {
             int width = getResources().getDimensionPixelSize(R.dimen.dp_70);
-            int height = getResources().getDimensionPixelSize(R.dimen.dp_70);
             //  int height = ViewGroup.LayoutParams.MATCH_PARENT;
             {
             SwipeMenuItem deleteItem = new SwipeMenuItem(AlarmActivity.this)
@@ -93,7 +97,8 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
                     .setText("删除")
                     .setTextColor(Color.WHITE)
                     .setWidth(width)
-                    .setHeight(height);
+                    .setHeight(RecyclerView.LayoutParams.MATCH_PARENT);
+
             rightMenu.addMenuItem(deleteItem);// 添加菜单到右侧。
             }
         }

@@ -3,10 +3,10 @@ package com.lzhz.lxh.sleepmonitor.analyzed;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +34,7 @@ import butterknife.Unbinder;
  */
 
 public class AnalyzeDetailsFragment extends Fragment implements View.OnClickListener {
+    private static final String TAG = AnalyzeDetailsFragment.class.getSimpleName();
     Unbinder unbinder;
     ArrayList<Point> pointList;
     int[] count;
@@ -73,6 +74,37 @@ public class AnalyzeDetailsFragment extends Fragment implements View.OnClickList
     private void init() {
         ivLeft.setOnClickListener(this);
         toolbar_tab = toolbar.findViewById(R.id.toolbar_tab);
+        toolbar_tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                Log.i(TAG,"postion======" + position);
+                switch (position){
+                    case 0:
+                        setDate(150);
+                        break;
+                    case 1:
+                        setDate(200);
+                        break;
+                    case 2:
+                        setDate(220);
+                        break;
+                    case 3:
+                        setDate(250);
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         toolbar_tab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

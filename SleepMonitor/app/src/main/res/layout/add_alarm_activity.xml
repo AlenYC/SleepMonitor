@@ -1,15 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="192dp"
-    android:background="?attr/colorPrimaryDark"
-    android:padding="16dp"
+    android:layout_height="match_parent"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical"
-    android:gravity="bottom">
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <NumberPicker
+            android:id="@+id/np_hour"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            />
+
+        <NumberPicker
+            android:id="@+id/np_minute"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftTextString="重复"
+        stv:sLeftTextColor="@color/tv_danse"
+        stv:sRightTextString="每天"
+        stv:sRightIconRes="@mipmap/back_faxian3x"
+        />
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftTextString="铃声"
+        stv:sLeftTextColor="@color/tv_danse"
+        stv:sRightTextString="钟声"
+        stv:sRightIconRes="@mipmap/back_faxian3x"
+        />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftTextString="稍后提醒"
+        stv:sLeftTextColor="@color/tv_danse"
+        stv:sRightViewType="switchBtn"
+        stv:sSwitchIsChecked="true"
+        stv:sSwitchMinWidth="36dp"
+        stv:sThumbResource="@drawable/thumb"
+        stv:sTrackResource="@drawable/track"/>
 
 
 
-</RelativeLayout>
+</LinearLayout>

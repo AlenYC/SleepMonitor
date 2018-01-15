@@ -9,6 +9,7 @@
 
 
     <com.allen.library.SuperTextView
+        android:background="@drawable/shape_topline_bg"
         android:id="@+id/alipay_stv"
         android:layout_width="match_parent"
         android:layout_height="80dp"

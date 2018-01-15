@@ -66,11 +66,12 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         // 设置监听器。
         smrvAlarmList.setSwipeMenuCreator(mSwipeMenuCreator);
         smrvAlarmList.setSwipeItemClickListener(this);
-        smrvAlarmList.addItemDecoration(new DividerItemDecoration(this,
-                DividerItemDecoration.VERTICAL_LIST));
+       /* smrvAlarmList.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL_LIST));*/
 
         smrvAlarmList.addItemDecoration(new RecycleViewDivider(
                 this, LinearLayoutManager.VERTICAL, 30, getResources().getColor(R.color.bg_color)));
+
         smrvAlarmList.setOnItemStateChangedListener(new OnItemStateChangedListener() {
             @Override
             public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {

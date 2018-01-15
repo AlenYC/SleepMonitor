@@ -28,6 +28,7 @@
             android:background="?attr/colorPrimaryDark"
             android:fillViewport="false"
             android:clickable="true"
+            android:focusable="true"
             app:tabMode="fixed"
             app:layout_scrollFlags="scroll"
             app:tabIndicatorColor="@color/white"

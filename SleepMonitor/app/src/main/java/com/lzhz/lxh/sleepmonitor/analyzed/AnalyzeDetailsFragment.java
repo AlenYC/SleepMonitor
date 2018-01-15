@@ -78,7 +78,6 @@ public class AnalyzeDetailsFragment extends Fragment implements View.OnClickList
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                Log.i(TAG,"postion======" + position);
                 switch (position){
                     case 0:
                         setDate(150);

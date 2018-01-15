@@ -32,9 +32,8 @@
         <activity android:name=".home.bluetooth.BlueToothActivity"></activity>
         <activity android:name=".home.bluetooth.activity.DeviceDetailActivity"></activity>
         <activity android:name=".home.activity.DetectionActivity">
-
         </activity>
-
+        <activity android:name=".home.activity.AddAlarmActivity"></activity>
         <service
             android:name="com.inuker.bluetooth.library.BluetoothService" />
     </application>

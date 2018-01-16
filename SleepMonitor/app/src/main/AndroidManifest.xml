@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.activity.AlarmActivity" />
+        <activity android:name=".home.activity.AlarmActivity" android:launchMode="singleTask"/>
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".sideslip.PersonalDetailsActivity" />
         <activity android:name=".sideslip.VersionsActivity" />

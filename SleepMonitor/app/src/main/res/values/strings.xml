@@ -26,4 +26,6 @@
     <string name="cycle_sure">确定</string>
     <string name="vibration">震动</string>
     <string name="ring">铃声</string>
+    <string name="zdong">震动</string>
+    <string name="day">每天</string>
 </resources>

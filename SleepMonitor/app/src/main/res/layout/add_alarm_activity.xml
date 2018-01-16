@@ -108,7 +108,7 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/arrow_two"
             android:textColor="@color/black_33"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
     </RelativeLayout>
 
     <TextView
@@ -117,6 +117,7 @@
         android:background="@color/line_and_outline_grey"/>
 
     <com.allen.library.SuperTextView
+        android:id="@+id/stv_remind"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         stv:sLeftTextString="稍后提醒"

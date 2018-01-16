@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
+import com.lzhz.lxh.sleepmonitor.home.activity.bean.AlarmBean;
 import com.lzhz.lxh.sleepmonitor.home.adapter.ShowAlarmAdapter;
 import com.lzhz.lxh.sleepmonitor.home.bean.AddAlarmBean;
 import com.lzhz.lxh.sleepmonitor.tools.DividerItemDecoration;
@@ -19,10 +20,14 @@ import com.lzhz.lxh.sleepmonitor.tools.ToastUtil;
 import com.lzhz.lxh.sleepmonitor.tools.view.RecycleViewDivider;
 import com.yanzhenjie.recyclerview.swipe.SwipeItemClickListener;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenu;
+import com.yanzhenjie.recyclerview.swipe.SwipeMenuBridge;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem;
+import com.yanzhenjie.recyclerview.swipe.SwipeMenuItemClickListener;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 import com.yanzhenjie.recyclerview.swipe.touch.OnItemStateChangedListener;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +46,7 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
     @BindView(R.id.smrv_alarm_list)
     SwipeMenuRecyclerView smrvAlarmList;
     private ShowAlarmAdapter adapter;
-    private List<AddAlarmBean> list;
+    private List<AlarmBean> list;
     @Override
     public void setRootView() {
         setContent(R.layout.alarm_activity);
@@ -50,16 +55,10 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
     @Override
     public void initData() {
 
+        LogUtils.i(list.toString());
     }
     @Override
     public void initViews() {
-
-        list = new ArrayList<AddAlarmBean>();
-        list.add(new AddAlarmBean("07:30", new ArrayList<String>(), true));
-        list.add(new AddAlarmBean("08:30", new ArrayList<String>(), true));
-        list.add(new AddAlarmBean("09:30", new ArrayList<String>(), true));
-
-        adapter = new ShowAlarmAdapter(this, R.layout.mb_alarm_list, list);
         smrvAlarmList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         // 如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         smrvAlarmList.setHasFixedSize(false);
@@ -79,11 +78,26 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
                 smrvAlarmList.invalidate();
             }
         });
+        //删除数据
+        smrvAlarmList.setSwipeMenuItemClickListener(new SwipeMenuItemClickListener() {
+            @Override
+            public void onItemClick(SwipeMenuBridge menuBridge) {
+                DataSupport.deleteAll(AlarmBean.class,"alarmId = ?",""+list.get(menuBridge.getAdapterPosition()).getAlarmId());
+                list.remove(menuBridge.getAdapterPosition());
+                init();
+                LogUtils.i("---" + list.size());
+            }
+        });
         smrvAlarmList.setItemViewSwipeEnabled(false);
-//        smrvAlarmList.setItemViewSwipeEnabled(true);
+
+        init();
+    }
+    private void init(){
+        list = new ArrayList<AlarmBean>();
+        list = DataSupport.findAll(AlarmBean.class);
+        adapter = new ShowAlarmAdapter(AlarmActivity.this, R.layout.mb_alarm_list, list);
         smrvAlarmList.setAdapter(adapter);
     }
-
 
     // 创建菜单：
     SwipeMenuCreator mSwipeMenuCreator = new SwipeMenuCreator() {
@@ -105,10 +119,20 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         }
     };
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        init();
+    }
 
     @Override
     public void onItemClick(View itemView, int position) {
-        ToastUtil.showShort(this,position +"aaa");
+        LogUtils.i(position +"----onItemClick");
+        Intent intent = new Intent(AlarmActivity.this,AddAlarmActivity.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("alarmBean",list.get(position));
+        intent.putExtras(mBundle);
+        startActivity(intent);
     }
 
     @Override

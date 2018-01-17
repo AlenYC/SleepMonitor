@@ -38,7 +38,7 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
 
     @BindView(R.id.rl_bluetooth_list)
     RecyclerView rlBluetoothList;
-    @BindView(R.id.ib_refresh)
+    @BindView(R.id.iv_refresh)
     ImageView ivRefersh;
     @BindView(R.id.rl_refresh)
     RelativeLayout rlRefersh;
@@ -50,7 +50,8 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
     @Override
     public void setRootView() {
         setContent(R.layout.activity_blue_tooth);
-
+        rlRefersh.setOnClickListener(this);
+        ivRefersh.setOnClickListener(this);
     }
 
     @Override
@@ -65,10 +66,7 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
         PersissionUtils.setOnPermissionInter(this);
         PermissionItem permissionItem = new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "Location", R.drawable.permission_ic_location);
         PersissionUtils.setPermission(this, permissionItem);
-        rlRefersh.setOnClickListener(this);
-        ivRefersh.setOnClickListener(this);
     }
-
     @Override
     public void initViews() {
         super.initViews();
@@ -79,13 +77,10 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
         tvTitle.setText("周围的蓝牙");
         tvRight.setText("确定");
     }
-
-
     @Override
     public void onClose() {
         LogUtils.i("onClose");
     }
-
     @Override
     public void onFinish() {
         pbar.setVisibility(View.VISIBLE);
@@ -93,7 +88,6 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
         BluetoothTools.getInstance().scan();
         scan();
     }
-
     private void scan() {
         BluetoothTools.getInstance().setOnscan(new scanTool() {
             @Override
@@ -103,15 +97,12 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
                     mAdapter.setDataList(mDevices);
                 }
             }
-
             @Override
             public void onSearchStopped() {
                 pbar.setVisibility(View.GONE);
             }
         });
-
     }
-
 
     @Override
     public void onDeny() {
@@ -134,6 +125,7 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
 
     @Override
     public void onClick(View view) {
+        super.onClick(view);
         switch (view.getId()) {
             case R.id.rl_refresh:
                 LogUtils.i("-----------onClick");
@@ -148,7 +140,7 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
                 scan();
                 break;
         }
-        super.onClick(view);
+
     }
 
     @Override

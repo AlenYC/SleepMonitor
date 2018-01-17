@@ -24,14 +24,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+
         >
         <com.allen.library.SuperTextView
             android:id="@+id/buletooth_stv"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:paddingRight="14dp"
             stv:sLeftTextColor="@color/tv_danse"
             stv:sLeftTextSize="16sp"
-
+            stv:sRightIconRes="@mipmap/back_faxian3x"
             />
 
     </LinearLayout>

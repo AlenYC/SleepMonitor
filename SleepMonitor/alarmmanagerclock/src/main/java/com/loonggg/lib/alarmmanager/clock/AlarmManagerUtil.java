@@ -14,7 +14,7 @@ import java.util.Calendar;
  * Created by loonggg on 2016/3/21.
  */
 public class AlarmManagerUtil {
-    public static final String ALARM_ACTION = "com.loonggg.alarm.clock";
+    public static final String ALARM_ACTION = "com.loonggg.alarmmanager.alarm.clock";
 
     public static void setAlarmTime(Context context, long timeInMillis, Intent intent) {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

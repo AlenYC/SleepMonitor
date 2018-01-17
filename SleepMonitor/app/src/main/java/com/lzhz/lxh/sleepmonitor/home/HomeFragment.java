@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.lzhz.lxh.sleepmonitor.MainActivity;
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.home.activity.AlarmActivity;
 import com.lzhz.lxh.sleepmonitor.home.adapter.HomeListAdapter;
@@ -36,6 +37,8 @@ import static android.support.v7.widget.LinearLayoutManager.VERTICAL;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.ib_alarm)
     ImageView ibAlarm;
+    @BindView(R.id.ib_user)
+    ImageView ibUser;
     Unbinder unbinder;
     @BindView(R.id.ib_buletooth)
     ImageView ibBuletooth;
@@ -44,7 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     HomeListAdapter homeListAdapter;
     @BindView(R.id.bt_ljjc)
     Button btLjjc;
-
+    MainActivity mainActivity;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 R.layout.home_fragment_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
         init();
+        mainActivity = (MainActivity) getActivity();
         return view;
     }
 
@@ -76,6 +80,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         homeListAdapter = new HomeListAdapter(getActivity(), R.layout.mb_home_list, list);
         rvHomeList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         rvHomeList.setAdapter(homeListAdapter);
+        ibUser.setOnClickListener(this);
 
     }
 
@@ -94,12 +99,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.ib_buletooth:
-
                 startActivity(new Intent(getActivity(), BlueToothActivity.class));
                 break;
                 case R.id.bt_ljjc:
-
                 startActivity(new Intent(getActivity(), BlueToothActivity.class));
+                break;
+                case R.id.ib_user:
+                    mainActivity.openDrawer();
                 break;
         }
     }

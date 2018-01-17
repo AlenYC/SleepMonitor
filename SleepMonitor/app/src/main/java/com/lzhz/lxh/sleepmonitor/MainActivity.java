@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.lzhz.lxh.sleepmonitor.home.adapter.FragmentAdapter;
 import com.lzhz.lxh.sleepmonitor.relatives.RelativesFragment;
 import com.lzhz.lxh.sleepmonitor.sideslip.PersonalDetailsActivity;
 import com.lzhz.lxh.sleepmonitor.sideslip.VersionsActivity;
+import com.lzhz.lxh.sleepmonitor.tools.view.NoScrollViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,9 +34,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.viewpager)
-    ViewPager viewPager;
+    NoScrollViewPager viewPager;
     @BindView(R.id.nav_view)
     NavigationView navView;
+    @BindView(R.id.dl_home)
+    DrawerLayout dlHome;
 
 
 
@@ -45,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.bind(this);
         initViews();
         viewPager.setCurrentItem(0);
+        viewPager.setNoScroll(true);
+    }
+    public void openDrawer(){
+        dlHome.openDrawer(navView);
     }
 
     public void initViews() {
@@ -92,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adapter.addFragment(new RelativesFragment());
         adapter.addFragment(new AnalyzeDetailsFragment());
         viewPager.setAdapter(adapter);
-
         //viewPager 改变监听
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

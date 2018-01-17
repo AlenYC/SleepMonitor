@@ -36,7 +36,7 @@
         android:layout_alignParentBottom="true"
         >
         <ImageView
-            android:id="@+id/ib_refresh"
+            android:id="@+id/iv_refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@mipmap/shaxin3x"

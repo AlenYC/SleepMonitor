@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class AlarmBean extends DataSupport implements Serializable{
     private int alarmId; //闹钟Id
-    private int flag;    //周期性时间间隔的标志,flag = 0 表示一次性的闹钟, flag = 1 表示每天提醒的闹钟(1天的时间间隔),flag = 2
+    private int flag;    //周期性时间间隔的标志,flag = 1 表示一次性的闹钟, flag = 0 表示每天提醒的闹钟(1天的时间间隔),flag = 2
                                    //表示按周每周提醒的闹钟（一周的周期性时间间隔）
     private int hour;    //时
     private int minute;  //分

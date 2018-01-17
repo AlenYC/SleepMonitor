@@ -1,10 +1,12 @@
 package com.lzhz.lxh.sleepmonitor.home.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,25 +18,27 @@ import android.widget.Toast;
 import com.allen.library.SuperTextView;
 import com.loonggg.lib.alarmmanager.clock.AlarmManagerUtil;
 import com.lzhz.lxh.sleepmonitor.R;
-import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.home.activity.bean.AlarmBean;
 import com.lzhz.lxh.sleepmonitor.home.activity.tools.SelectRemindCyclePopup;
 import com.lzhz.lxh.sleepmonitor.home.activity.tools.SelectRemindWayPopup;
 import com.lzhz.lxh.sleepmonitor.tools.LogUtils;
 import com.lzhz.lxh.sleepmonitor.tools.view.WheelView;
 
+import org.litepal.crud.DataSupport;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+
 /**
  * 作者：lxh on 2018-01-06:15:20
  * 邮箱：15911638454@163.com
  * 添加闹钟
  */
-public class AddAlarmActivity extends BaseActivity {
-    NumberPicker npHour;
-    NumberPicker npMinute;
+public class Add1AlarmActivity extends AppCompatActivity implements View.OnClickListener{
     private RelativeLayout repeat_rl, ring_rl;
     private TextView tv_repeat_value, tv_ring_value;
+    private TextView tv_right_text;
+    private ImageView iv_left;
     private LinearLayout allLayout;
     private SuperTextView stv_remind;
     Integer[] times = {10,30};
@@ -44,30 +48,34 @@ public class AddAlarmActivity extends BaseActivity {
     private static  AlarmBean alarmBean;
     WheelView wheelView;
     WheelView wheelView1;
+    boolean boo;
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.add_alarm_activity);
+        initViews();
+        initData();
+    }
     public void initViews() {
-        setContent(R.layout.add_alarm_activity);
-      //  npHour = (NumberPicker)findViewById(R.id.np_hour);
-     //   npMinute = (NumberPicker)findViewById(R.id.np_minute);
         allLayout = findViewById(R.id.all_layout);
         repeat_rl = findViewById(R.id.repeat_rl);
+        iv_left = findViewById(R.id.iv_left);
+        tv_right_text = findViewById(R.id.tv_right_text);
+        iv_left.setOnClickListener(this);
+        tv_right_text.setOnClickListener(this);
         repeat_rl.setOnClickListener(this);
         ring_rl = findViewById(R.id.ring_rl);
         ring_rl.setOnClickListener(this);
         tv_repeat_value =  findViewById(R.id.tv_repeat_value);
         tv_ring_value = findViewById(R.id.tv_ring_value);
         stv_remind = findViewById(R.id.stv_remind);
-        tv_ring_value.setText(R.string.zdong);
-        tv_repeat_value.setText(R.string.day);
         stv_remind.setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 alarmBean.setState(b);
-                LogUtils.i("stv_remind--- " + alarmState);
             }
         });
     }
-    @Override
     public void initData() {
         Intent intent = getIntent();
         alarmBean = (AlarmBean) intent.getSerializableExtra("alarmBean");
@@ -81,23 +89,44 @@ public class AddAlarmActivity extends BaseActivity {
             alarmBean.setSoundOrVibrator(0);
             alarmBean.setAlarmId(addAlarmId());
             alarmBean.setFlag(0);
-            alarmBean.setWeeks(null);
+            alarmBean.setWeeks("每天");
+        }else{
+            boo = true;
+            tv_repeat_value.setText(alarmBean.getWeeks());
+            stv_remind.setSwitchIsChecked(alarmBean.isState());
+            if(alarmBean.getSoundOrVibrator() == 0){
+                tv_ring_value.setText(R.string.zdong);
+            }else {
+                tv_ring_value.setText("铃声");
+            }
         }
 
 
         wheelView= (WheelView) findViewById(R.id.wv_from_hour);
-        wheelView.setData(getMinuteData(30));
+        wheelView.setData(getMinuteData(23));
         wheelView1= (WheelView) findViewById(R.id.wv_from_dd);
-        wheelView1.setData(getMinuteData(60));
-        wheelView1.setDefault(5);
+        wheelView1.setData(getMinuteData(59));
+        wheelView.setDefault(alarmBean.getHour());
+        wheelView1.setDefault(alarmBean.getMinute());
+        //添加闹钟时间
+        wheelView.setOnSelectListener(new WheelView.OnSelectListener() {
+            @Override
+            public void endSelect(int id, String text) {
+                alarmBean.setHour(id);
+            }
+
+            @Override
+            public void selecting(int id, String text) {
+
+            }
+        });
         wheelView1.setOnSelectListener(new WheelView.OnSelectListener() {
             @Override
             public void endSelect(int id, String text) {
-                Log.i(text,id+"------endSelect-------");
+                alarmBean.setMinute(id);
             }
             @Override
             public void selecting(int id, String text) {
-                Log.i(text,id+"------selecting-------");
             }
         });
     }
@@ -108,32 +137,7 @@ public class AddAlarmActivity extends BaseActivity {
         }
         return list;
     }
-
-
-
-
-
-
-
-     /*   npHour.setMinValue(0);
-        npHour.setMaxValue(23);
-        npHour.setValue(alarmBean.getHour());
-        npHour.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                alarmBean.setHour(i1);
-            }
-        });
-        npMinute.setMinValue(0);
-        npMinute.setMaxValue(59);
-        npMinute.setValue(alarmBean.getMinute());
-        npMinute.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                alarmBean.setMinute(i1);
-            }
-        });*/
-
+    //设置闹钟
     private void setClock() {
         alarmId = addAlarmId();
         if (alarmBean.getCycle() == 0) {//是每天的闹钟
@@ -350,7 +354,6 @@ public class AddAlarmActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        super.onClick(view);
         switch (view.getId()) {
             case R.id.repeat_rl:
                 selectRemindCycle();
@@ -358,20 +361,22 @@ public class AddAlarmActivity extends BaseActivity {
             case R.id.ring_rl:
                 selectRingWay();
                 break;
+            case R.id.iv_left:
+                finish();
+                break;
+            case R.id.tv_right_text:
+
+                if(boo){
+                    AlarmManagerUtil.cancelAlarm(this,AlarmManagerUtil.ALARM_ACTION,alarmBean.getAlarmId());
+                    ContentValues values = new ContentValues();
+                    DataSupport.deleteAll( AlarmBean.class,"alarmId = ?",alarmBean.getAlarmId()+"");
+                }
+                setClock();
+                break;
             default:
                 break;
         }
     }
 
-    @Override
-    public void getCenTitle(ImageView ivLeft, TextView tvTitle, TextView tvRight) {
-        tvTitle.setText("添加闹钟");
-        tvRight.setText("存储");
-        tvRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setClock();
-            }
-        });
-    }
+
 }

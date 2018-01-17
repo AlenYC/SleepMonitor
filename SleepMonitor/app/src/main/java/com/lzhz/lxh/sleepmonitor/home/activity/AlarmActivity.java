@@ -41,7 +41,7 @@ import butterknife.ButterKnife;
  * 闹钟页面
  */
 
-public class AlarmActivity extends BaseActivity implements SwipeItemClickListener{
+public class AlarmActivity extends BaseActivity{
 
     @BindView(R.id.smrv_alarm_list)
     SwipeMenuRecyclerView smrvAlarmList;
@@ -51,7 +51,6 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
     public void setRootView() {
         setContent(R.layout.alarm_activity);
     }
-
     @Override
     public void initData() {
 
@@ -64,9 +63,6 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
         smrvAlarmList.setHasFixedSize(false);
         // 设置监听器。
         smrvAlarmList.setSwipeMenuCreator(mSwipeMenuCreator);
-        smrvAlarmList.setSwipeItemClickListener(this);
-       /* smrvAlarmList.addItemDecoration(new DividerItemDecoration(this,
-                DividerItemDecoration.VERTICAL_LIST));*/
 
         smrvAlarmList.addItemDecoration(new RecycleViewDivider(
                 this, LinearLayoutManager.VERTICAL, 30, getResources().getColor(R.color.bg_color)));
@@ -113,7 +109,6 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
                     .setTextColor(Color.WHITE)
                     .setWidth(width)
                     .setHeight(RecyclerView.LayoutParams.MATCH_PARENT);
-
             rightMenu.addMenuItem(deleteItem);// 添加菜单到右侧。
             }
         }
@@ -123,16 +118,6 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         init();
-    }
-
-    @Override
-    public void onItemClick(View itemView, int position) {
-        LogUtils.i(position +"----onItemClick");
-        Intent intent = new Intent(AlarmActivity.this,AddAlarmActivity.class);
-        Bundle mBundle = new Bundle();
-        mBundle.putSerializable("alarmBean",list.get(position));
-        intent.putExtras(mBundle);
-        startActivity(intent);
     }
 
     @Override
@@ -149,7 +134,7 @@ public class AlarmActivity extends BaseActivity implements SwipeItemClickListene
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(AlarmActivity.this, AddAlarmActivity.class);
+                intent.setClass(AlarmActivity.this, Add1AlarmActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,43 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:stv="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical"
     android:id="@+id/all_layout"
     >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="?attr/colorPrimaryDark"
+        >
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/back_icon3x"
+
+            />
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/title_color"
+            android:text="添加闹钟"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:singleLine="true"
+            android:paddingRight="14dp"
+            android:text="存储"
+            android:textColor="@color/title_color"
+            android:textSize="16sp" />
+    </android.support.v7.widget.Toolbar>
+
     <LinearLayout
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content">
-        <NumberPicker
-            android:id="@+id/np_hour"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="right"
+        <com.lzhz.lxh.sleepmonitor.tools.view.WheelView
+            android:id="@+id/wv_from_hour"
+            app:isCyclic="false"
+            app:itemNumber="5"
+            style="@style/wheelViewStyle_time"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="时" />
-        <NumberPicker
-            android:id="@+id/np_minute"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:textColor="@color/tv_danse"
+            android:text="时"
+            />
+        <com.lzhz.lxh.sleepmonitor.tools.view.WheelView
+            android:id="@+id/wv_from_dd"
+            app:isCyclic="false"
+            app:itemNumber="5"
+            style="@style/wheelViewStyle_time"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="分" />
+            android:textColor="@color/tv_danse"
+            android:text="分"
+            />
     </LinearLayout>
-
-
 
     <TextView
         android:layout_width="match_parent"
@@ -72,6 +108,7 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/arrow_one"
             android:textColor="@color/black_33"
+            android:text="每天"
             android:textSize="14sp"/>
     </RelativeLayout>
 
@@ -108,6 +145,7 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/arrow_two"
             android:textColor="@color/black_33"
+            android:text="震动"
             android:textSize="14sp"/>
     </RelativeLayout>
 

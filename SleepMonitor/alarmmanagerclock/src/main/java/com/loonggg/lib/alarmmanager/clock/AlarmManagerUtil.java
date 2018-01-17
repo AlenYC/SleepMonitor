@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 
 import java.util.Calendar;
@@ -45,6 +46,8 @@ public class AlarmManagerUtil {
      */
     public static void setAlarm(Context context, int flag, int hour, int minute, int id, int
             week, String tips, int soundOrVibrator) {
+        Log.i("setAlarm", "flag = " + flag +"hour = " + hour +"minute = " + minute +"id = " + id +"week = " + week +"tips = " + tips +"soundOrVibrator =" +soundOrVibrator);
+
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
         long intervalMillis = 0;

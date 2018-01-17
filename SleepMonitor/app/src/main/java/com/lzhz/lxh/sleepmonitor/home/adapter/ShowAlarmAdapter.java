@@ -1,6 +1,9 @@
 package com.lzhz.lxh.sleepmonitor.home.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,8 @@ import com.allen.library.SuperTextView;
 import com.loonggg.lib.alarmmanager.clock.AlarmManagerUtil;
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.base.adapter.CommonAdapter;
+import com.lzhz.lxh.sleepmonitor.home.activity.Add1AlarmActivity;
+import com.lzhz.lxh.sleepmonitor.home.activity.AlarmActivity;
 import com.lzhz.lxh.sleepmonitor.home.activity.bean.AlarmBean;
 import com.lzhz.lxh.sleepmonitor.home.bean.AddAlarmBean;
 import com.lzhz.lxh.sleepmonitor.tools.LogUtils;
@@ -62,10 +67,20 @@ public class ShowAlarmAdapter  extends CommonAdapter<RecyclerView.ViewHolder> {
                     //删除
                     AlarmManagerUtil.cancelAlarm(mContext,AlarmManagerUtil.ALARM_ACTION,mDatas.get(position).getAlarmId());
                 }
-                AlarmBean alarmBean1= alarmBean;
-                alarmBean1.setState(b);
-                int i = alarmBean1.updateAll("alarmId = ?",alarmBean1.getAlarmId()+"");
-                LogUtils.i("check" + b + "---" +i);
+                ContentValues values = new ContentValues();
+                values.put("state",b);
+                DataSupport.updateAll(AlarmBean.class,values, "alarmId = ?",alarmBean.getAlarmId()+"");
+            }
+        });
+
+        myViewHolder.smrv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext,Add1AlarmActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("alarmBean",mDatas.get(position));
+                intent.putExtras(mBundle);
+                mContext.startActivity(intent);
             }
         });
     }
@@ -92,10 +107,4 @@ public class ShowAlarmAdapter  extends CommonAdapter<RecyclerView.ViewHolder> {
             smrv = itemView.findViewById(R.id.alipay_stv);
         }
     }
-
-    private String getDay(String str){
-        return null;
-    }
-
-
 }

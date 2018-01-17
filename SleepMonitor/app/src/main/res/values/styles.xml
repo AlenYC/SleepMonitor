@@ -45,4 +45,18 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="wheelViewStyle_time">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="itemNumber">3</item>
+        <item name="wvLineColor">@color/line_and_outline_grey</item>
+        <item name="lineHeight">0.5dp</item>
+        <item name="noEmpty">true</item>
+        <item name="normalTextColor">#222222</item>
+        <item name="normalTextSize">@dimen/text_size_normal</item>
+        <item name="selectedTextColor">#222222</item>
+        <item name="selectedTextSize">@dimen/text_size_select</item>
+        <item name="unitHeight">@dimen/height_small</item>
+    </style>
 </resources>

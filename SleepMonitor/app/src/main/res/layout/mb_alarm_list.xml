@@ -15,12 +15,12 @@
         android:background="@drawable/shape_topline_bg"
         stv:sCenterBottomTextColor="@color/tv_danse"
         stv:sLeftBottomTextColor="@color/tv_danse"
-        stv:sLeftBottomTextSize="15sp"
-        stv:sLeftBottomTextString="周一，周二"
+        stv:sLeftBottomTextSize="12sp"
+        stv:sLeftBottomTextString=""
         stv:sLeftIconRes="@mipmap/alarm_ico3x"
         stv:sLeftTextColor="@color/tv_black"
-        stv:sLeftTextSize="22sp"
-        stv:sLeftTextString="支付宝"
+        stv:sLeftTextSize="26sp"
+        stv:sLeftTextString=""
         stv:sLeftTvDrawableHeight="15dp"
         stv:sLeftTvDrawableWidth="40dp"
         stv:sLeftViewGravity="left_center"
@@ -29,6 +29,5 @@
         stv:sSwitchMinWidth="36dp"
         stv:sThumbResource="@drawable/thumb"
         stv:sTrackResource="@drawable/track" />
-
 
 </LinearLayout>

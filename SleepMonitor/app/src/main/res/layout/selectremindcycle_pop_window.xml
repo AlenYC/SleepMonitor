@@ -52,7 +52,7 @@
             android:textColor="@color/black_33"
             android:textSize="14sp"/>
 
-        <TextView style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+        <TextView style="@style/horizontal_line_style"/>
 
         <TextView
             android:id="@+id/tv_drugcycle_2"

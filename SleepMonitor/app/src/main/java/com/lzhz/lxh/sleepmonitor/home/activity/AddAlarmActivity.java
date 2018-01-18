@@ -1,3 +1,4 @@
+/*
 package com.lzhz.lxh.sleepmonitor.home.activity;
 
 import android.content.Intent;
@@ -25,11 +26,13 @@ import com.lzhz.lxh.sleepmonitor.tools.view.WheelView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+*/
 /**
  * 作者：lxh on 2018-01-06:15:20
  * 邮箱：15911638454@163.com
  * 添加闹钟
- */
+ *//*
+
 public class AddAlarmActivity extends BaseActivity {
     NumberPicker npHour;
     NumberPicker npMinute;
@@ -115,7 +118,8 @@ public class AddAlarmActivity extends BaseActivity {
 
 
 
-     /*   npHour.setMinValue(0);
+     */
+/*   npHour.setMinValue(0);
         npHour.setMaxValue(23);
         npHour.setValue(alarmBean.getHour());
         npHour.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -132,7 +136,8 @@ public class AddAlarmActivity extends BaseActivity {
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
                 alarmBean.setMinute(i1);
             }
-        });*/
+        });*//*
+
 
     private void setClock() {
         alarmId = addAlarmId();
@@ -272,11 +277,13 @@ public class AddAlarmActivity extends BaseActivity {
         });
     }
 
-    /**
+    */
+/**
      * @param repeat 解析二进制闹钟周期
      * @param flag   flag=0返回带有汉字的周一，周二cycle等，flag=1,返回weeks(1,2,3)
      * @return
-     */
+     *//*
+
     public static String parseRepeat(int repeat, int flag) {
         String cycle = "";
         String weeks = "";
@@ -375,3 +382,4 @@ public class AddAlarmActivity extends BaseActivity {
         });
     }
 }
+*/

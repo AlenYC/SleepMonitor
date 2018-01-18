@@ -43,7 +43,6 @@ public class ShowAlarmAdapter  extends CommonAdapter<RecyclerView.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(mContext, mLayoutId, null);
         MyViewHolder holder = new MyViewHolder(view);
-
         return holder;
     }
 
@@ -53,7 +52,7 @@ public class ShowAlarmAdapter  extends CommonAdapter<RecyclerView.ViewHolder> {
         final  AlarmBean alarmBean = mDatas.get(position);
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         //myViewHolder.smrv.setLeftBottomString(mDatas.get(position).getAabTime());
-        myViewHolder.smrv.setLeftString(alarmBean.getHour() + ":" + mDatas.get(position).getMinute());
+        myViewHolder.smrv.setLeftString(getTime(alarmBean.getHour(),alarmBean.getMinute()));
         myViewHolder.smrv.setLeftBottomString(alarmBean.getWeeks() +"");
         myViewHolder.smrv.setSwitchIsChecked(alarmBean.isState());
 
@@ -65,10 +64,13 @@ public class ShowAlarmAdapter  extends CommonAdapter<RecyclerView.ViewHolder> {
                     addAlart(alarmBean);
                 }else{
                     //删除
-                    AlarmManagerUtil.cancelAlarm(mContext,AlarmManagerUtil.ALARM_ACTION,mDatas.get(position).getAlarmId());
+                    for (int i = 0;i<alarmBean.getAlarmIds().size();i++){
+                        AlarmManagerUtil.cancelAlarm(mContext,AlarmManagerUtil.ALARM_ACTION,mDatas.get(position).getAlarmIds().get(i));
+                    }
                 }
                 ContentValues values = new ContentValues();
                 values.put("state",b);
+                alarmBean.setState(b);
                 DataSupport.updateAll(AlarmBean.class,values, "alarmId = ?",alarmBean.getAlarmId()+"");
             }
         });
@@ -84,17 +86,27 @@ public class ShowAlarmAdapter  extends CommonAdapter<RecyclerView.ViewHolder> {
             }
         });
     }
+    private String getTime(int hour,int minute){
+        String time;
+        time = hour<10? "0"+hour:""+hour;
+        time = minute<10? time + "："+"0"+minute:time + "："+minute;
+        return time;
+    }
 
     private void addAlart(AlarmBean bean) {
         if (bean.getCycle() == 0 || bean.getCycle() == -1) {//是每天的闹钟
-            AlarmManagerUtil.setAlarm(mContext, bean.getFlag(),bean.getHour(),
-                    bean.getMinute(),bean.getAlarmId(), 0, bean.getTips(),bean.getSoundOrVibrator());
+
+            for (int i = 0;i<bean.getAlarmIds().size();i++){
+                AlarmManagerUtil.setAlarm(mContext, bean.getFlag(),bean.getHour(),
+                        bean.getMinute(),bean.getAlarmIds().get(0), 0, bean.getTips(),bean.getSoundOrVibrator());
+            }
 
         } else {//多选，周几的闹钟
-            String[] weeks = bean.getWeeks().split(",");
+            String weeksStr = AlarmManagerUtil.parseRepeat(bean.getCycle(), 1);
+            String[] weeks = weeksStr.split(",");
             for (int i = 0; i < weeks.length; i++) {
                 AlarmManagerUtil.setAlarm(mContext, bean.getFlag(),bean.getHour(),
-                        bean.getMinute(),bean.getAlarmId(), Integer.parseInt(weeks[i]), bean.getTips(),bean.getSoundOrVibrator());
+                        bean.getMinute(),bean.getAlarmIds().get(i), Integer.parseInt(weeks[i]), bean.getTips(),bean.getSoundOrVibrator());
             }
         }
     }

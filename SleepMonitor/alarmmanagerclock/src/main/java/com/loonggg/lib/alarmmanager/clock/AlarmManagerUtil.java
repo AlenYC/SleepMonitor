@@ -51,6 +51,10 @@ public class AlarmManagerUtil {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
         long intervalMillis = 0;
+        int year = calendar.get(Calendar.YEAR);
+        int MONTH = calendar.get(Calendar.MONTH);
+        int DAY_OF_MONTH = calendar.get(Calendar.DAY_OF_MONTH);
+        Log.i("year",year +"--" + MONTH +"--"+ DAY_OF_MONTH);
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get
                 (Calendar.DAY_OF_MONTH), hour, minute, 10);
         if (flag == 0) {
@@ -60,7 +64,8 @@ public class AlarmManagerUtil {
         } else if (flag == 2) {
             intervalMillis = 24 * 3600 * 1000 * 7;
         }
-        Intent intent = new Intent(ALARM_ACTION);
+        Intent intent = new Intent();
+        intent.setAction(ALARM_ACTION);
         intent.putExtra("intervalMillis", intervalMillis);
         intent.putExtra("msg", tips);
         intent.putExtra("id", id);
@@ -68,8 +73,13 @@ public class AlarmManagerUtil {
         PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent
                 .FLAG_CANCEL_CURRENT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            am.setWindow(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),
-                    intervalMillis, sender);
+            Log.i("setWindow--------" , calMethod(week, calendar.getTimeInMillis())+ "----intervalMillis--" + intervalMillis);
+           /* am.setRepeating(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),
+                    intervalMillis, sender);*/
+          /*  am.setWindow(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),
+                    intervalMillis, sender);*/
+            am.setExact(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),
+                     sender);
         } else {
             if (flag == 0) {
                 am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
@@ -80,6 +90,77 @@ public class AlarmManagerUtil {
         }
     }
 
+    /**
+     * @param repeat 解析二进制闹钟周期
+     * @param flag   flag=0返回带有汉字的周一，周二cycle等，flag=1,返回weeks(1,2,3)
+     * @return
+     */
+    public static String parseRepeat(int repeat, int flag) {
+        String cycle = "";
+        String weeks = "";
+        if (repeat == 0) {
+            repeat = 127;
+        }
+        if (repeat % 2 == 1) {
+            cycle = "周一";
+            weeks = "1";
+        }
+        if (repeat % 4 >= 2) {
+            if ("".equals(cycle)) {
+                cycle = "周二";
+                weeks = "2";
+            } else {
+                cycle = cycle + "," + "周二";
+                weeks = weeks + "," + "2";
+            }
+        }
+        if (repeat % 8 >= 4) {
+            if ("".equals(cycle)) {
+                cycle = "周三";
+                weeks = "3";
+            } else {
+                cycle = cycle + "," + "周三";
+                weeks = weeks + "," + "3";
+            }
+        }
+        if (repeat % 16 >= 8) {
+            if ("".equals(cycle)) {
+                cycle = "周四";
+                weeks = "4";
+            } else {
+                cycle = cycle + "," + "周四";
+                weeks = weeks + "," + "4";
+            }
+        }
+        if (repeat % 32 >= 16) {
+            if ("".equals(cycle)) {
+                cycle = "周五";
+                weeks = "5";
+            } else {
+                cycle = cycle + "," + "周五";
+                weeks = weeks + "," + "5";
+            }
+        }
+        if (repeat % 64 >= 32) {
+            if ("".equals(cycle)) {
+                cycle = "周六";
+                weeks = "6";
+            } else {
+                cycle = cycle + "," + "周六";
+                weeks = weeks + "," + "6";
+            }
+        }
+        if (repeat / 64 == 1) {
+            if ("".equals(cycle)) {
+                cycle = "周日";
+                weeks = "7";
+            } else {
+                cycle = cycle + "," + "周日";
+                weeks = weeks + "," + "7";
+            }
+        }
+        return flag == 0 ? cycle : weeks;
+    }
 
     /**
      * @param weekflag 传入的是周几

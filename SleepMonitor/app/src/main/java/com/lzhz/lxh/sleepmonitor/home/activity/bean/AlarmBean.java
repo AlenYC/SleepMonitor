@@ -1,8 +1,11 @@
 package com.lzhz.lxh.sleepmonitor.home.activity.bean;
 
+import android.content.Intent;
+
 import org.litepal.crud.DataSupport;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * 作者：lxh on 2018-01-15:15:27
@@ -10,6 +13,7 @@ import java.io.Serializable;
  */
 
 public class AlarmBean extends DataSupport implements Serializable{
+    private ArrayList<Integer> alarmIds; //闹钟Id
     private int alarmId; //闹钟Id
     private int flag;    //周期性时间间隔的标志,flag = 1 表示一次性的闹钟, flag = 0 表示每天提醒的闹钟(1天的时间间隔),flag = 2
                                    //表示按周每周提醒的闹钟（一周的周期性时间间隔）
@@ -20,6 +24,22 @@ public class AlarmBean extends DataSupport implements Serializable{
     private int cycle;    //0 表示每天 ，-1表示只响一次的闹钟
     private String weeks;      //多天用"，"分开
     private boolean state;
+
+    public ArrayList<Integer> getAlarmIds() {
+        return alarmIds;
+    }
+
+    public void setAlarmIds(ArrayList<Integer> alarmIds) {
+        this.alarmIds = alarmIds;
+    }
+
+    public int getAlarmId() {
+        return alarmId;
+    }
+
+    public void setAlarmId(int alarmId) {
+        this.alarmId = alarmId;
+    }
 
     public int getCycle() {
         return cycle;
@@ -43,14 +63,6 @@ public class AlarmBean extends DataSupport implements Serializable{
 
     public void setState(boolean state) {
         this.state = state;
-    }
-
-    public int getAlarmId() {
-        return alarmId;
-    }
-
-    public void setAlarmId(int alarmId) {
-        this.alarmId = alarmId;
     }
 
     public int getFlag() {

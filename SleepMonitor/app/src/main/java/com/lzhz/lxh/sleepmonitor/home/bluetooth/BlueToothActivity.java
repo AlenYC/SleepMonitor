@@ -2,10 +2,14 @@ package com.lzhz.lxh.sleepmonitor.home.bluetooth;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -14,7 +18,6 @@ import android.widget.TextView;
 
 import com.inuker.bluetooth.library.search.SearchResult;
 import com.lzhz.lxh.sleepmonitor.R;
-import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.home.bluetooth.adapter.DeviceListAdapter;
 import com.lzhz.lxh.sleepmonitor.home.bluetooth.tools.BluetoothTools;
 import com.lzhz.lxh.sleepmonitor.home.bluetooth.tools.BluetoothTools.scanTool;
@@ -34,7 +37,7 @@ import me.weyye.hipermission.PermissionItem;
  * 蓝牙
  */
 
-public class BlueToothActivity extends BaseActivity implements PermissionInter {
+public class BlueToothActivity extends AppCompatActivity implements PermissionInter, View.OnClickListener {
 
     @BindView(R.id.rl_bluetooth_list)
     RecyclerView rlBluetoothList;
@@ -44,17 +47,31 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
     RelativeLayout rlRefersh;
     @BindView(R.id.pbar)
     ProgressBar pbar;
+    @BindView(R.id.iv_left)
+    ImageView ivLeft;
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+    @BindView(R.id.tv_right_text)
+    TextView tvRightText;
     private List<SearchResult> mDevices;
     DeviceListAdapter mAdapter;
 
     @Override
-    public void setRootView() {
-        setContent(R.layout.activity_blue_tooth);
-        rlRefersh.setOnClickListener(this);
-        ivRefersh.setOnClickListener(this);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_blue_tooth);
+        ButterKnife.bind(this);
+        initViews();
+        setRootView();
+        initData();
     }
 
-    @Override
+    public void setRootView() {
+        rlRefersh.setOnClickListener(this);
+        ivRefersh.setOnClickListener(this);
+        ivLeft.setOnClickListener(this);
+    }
+
     public void initData() {
 
         mDevices = new ArrayList<SearchResult>();
@@ -67,28 +84,26 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
         PermissionItem permissionItem = new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "Location", R.drawable.permission_ic_location);
         PersissionUtils.setPermission(this, permissionItem);
     }
-    @Override
+
     public void initViews() {
-        super.initViews();
+        toolbarTitle.setText("周围的蓝牙");
+        tvRightText.setText("确定");
     }
 
-    @Override
-    public void getCenTitle(ImageView ivLeft, TextView tvTitle, TextView tvRight) {
-        tvTitle.setText("周围的蓝牙");
-        tvRight.setText("确定");
-    }
     @Override
     public void onClose() {
         LogUtils.i("onClose");
     }
+
     @Override
     public void onFinish() {
+        scan();
+    }
+
+    private void scan() {
         pbar.setVisibility(View.VISIBLE);
         //扫描
         BluetoothTools.getInstance().scan();
-        scan();
-    }
-    private void scan() {
         BluetoothTools.getInstance().setOnscan(new scanTool() {
             @Override
             public void onDeviceFounded(SearchResult device) {
@@ -97,6 +112,7 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
                     mAdapter.setDataList(mDevices);
                 }
             }
+
             @Override
             public void onSearchStopped() {
                 pbar.setVisibility(View.GONE);
@@ -116,16 +132,21 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
     }
 
     private void setAnim(View view) {
-        Animation animation = new RotateAnimation(0, 360);
+       /* Animation animation = new RotateAnimation(0, 360);
         animation.setDuration(2000);
         animation.setRepeatCount(8);//动画的重复次数
         animation.setFillAfter(true);//设置为true，动画转化结束后被应用
-        view.startAnimation(animation);//开始动画
+        view.startAnimation(animation);//开始动画*/
+        Animation circle_anim = AnimationUtils.loadAnimation(this, R.anim.anim_round_rotate);
+        LinearInterpolator interpolator = new LinearInterpolator();  //设置匀速旋转，在xml文件中设置会出现卡顿
+        circle_anim.setInterpolator(interpolator);
+        if (circle_anim != null) {
+            view.startAnimation(circle_anim);  //开始动画
+        }
     }
 
     @Override
     public void onClick(View view) {
-        super.onClick(view);
         switch (view.getId()) {
             case R.id.rl_refresh:
                 LogUtils.i("-----------onClick");
@@ -133,14 +154,16 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
                 setAnim(ivRefersh);
                 scan();
                 break;
-            case R.id.ib_refresh:
+            case R.id.iv_refresh:
                 LogUtils.i("-----------ib_refresh");
                 mDevices.clear();
                 setAnim(ivRefersh);
                 scan();
                 break;
+            case R.id.iv_left:
+                finish();
+                break;
         }
-
     }
 
     @Override
@@ -149,10 +172,5 @@ public class BlueToothActivity extends BaseActivity implements PermissionInter {
         BluetoothTools.getInstance().getClient().stopSearch();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

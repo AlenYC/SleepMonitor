@@ -41,7 +41,7 @@ dependencies {
     compile 'com.inuker.bluetooth:library:1.4.0'
     //权限管理
     compile 'me.weyye.hipermission:library:1.0.7'
-    implementation project(':alarmmanagerclock')
+    compile project(':alarmmanagerclock')
     //数据库
     compile 'org.litepal.android:core:1.5.0'
 }

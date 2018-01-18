@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
         >
+
         <com.allen.library.SuperTextView
             android:id="@+id/buletooth_stv"
             android:layout_width="match_parent"

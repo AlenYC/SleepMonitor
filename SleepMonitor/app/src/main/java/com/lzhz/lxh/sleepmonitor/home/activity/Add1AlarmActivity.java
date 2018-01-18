@@ -28,6 +28,7 @@ import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 /**
  * 作者：lxh on 2018-01-06:15:20
@@ -41,13 +42,11 @@ public class Add1AlarmActivity extends AppCompatActivity implements View.OnClick
     private ImageView iv_left;
     private LinearLayout allLayout;
     private SuperTextView stv_remind;
-    Integer[] times = {10,30};
-    private int alarmId;
-    private static String mWeeks;
-    private boolean alarmState = true;
+    private boolean alarmState = true;  //闹钟是否启动
     private static  AlarmBean alarmBean;
     WheelView wheelView;
     WheelView wheelView1;
+    ArrayList<Integer> alarmId = new ArrayList<>();
     boolean boo;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,7 +86,9 @@ public class Add1AlarmActivity extends AppCompatActivity implements View.OnClick
             alarmBean.setCycle(0);
             alarmBean.setTips("闹钟响了");
             alarmBean.setSoundOrVibrator(0);
-            alarmBean.setAlarmId(addAlarmId());
+            alarmId.add(addAlarmId());
+            alarmBean.setAlarmIds(alarmId);
+            alarmBean.setAlarmId(alarmId.get(0));
             alarmBean.setFlag(0);
             alarmBean.setWeeks("每天");
         }else{
@@ -139,14 +140,13 @@ public class Add1AlarmActivity extends AppCompatActivity implements View.OnClick
     }
     //设置闹钟
     private void setClock() {
-        alarmId = addAlarmId();
         if (alarmBean.getCycle() == 0) {//是每天的闹钟
 
             alarmBean.setFlag(0);
 
             if(alarmState)   //alarmState为true时添加闹钟 否则只添加到数据库
                 AlarmManagerUtil.setAlarm(this, alarmBean.getFlag(),alarmBean.getHour(),
-                        alarmBean.getMinute(), alarmBean.getAlarmId(), 0, alarmBean.getTips(), alarmBean.getSoundOrVibrator());
+                        alarmBean.getMinute(), alarmBean.getAlarmIds().get(0), 0, alarmBean.getTips(), alarmBean.getSoundOrVibrator());
 
         } if(alarmBean.getCycle() == -1){//是只响一次的闹钟
 
@@ -154,7 +154,7 @@ public class Add1AlarmActivity extends AppCompatActivity implements View.OnClick
 
             if(alarmState)
                 AlarmManagerUtil.setAlarm(this, alarmBean.getFlag(),alarmBean.getHour(),
-                        alarmBean.getMinute(), alarmBean.getAlarmId(), 0, alarmBean.getTips(), alarmBean.getSoundOrVibrator());
+                        alarmBean.getMinute(), alarmBean.getAlarmIds().get(0), 0, alarmBean.getTips(), alarmBean.getSoundOrVibrator());
 
         }else {//多选，周几的闹钟
 
@@ -163,9 +163,13 @@ public class Add1AlarmActivity extends AppCompatActivity implements View.OnClick
 
             for (int i = 0; i < weeks.length; i++) {
                 alarmBean.setFlag(2);
+                alarmId.add(addAlarmId());
                 if(alarmState)
                 AlarmManagerUtil.setAlarm(this, alarmBean.getFlag(),alarmBean.getHour(),
-                        alarmBean.getMinute(), alarmBean.getAlarmId(), Integer.parseInt(weeks[i]), alarmBean.getTips(), alarmBean.getSoundOrVibrator());
+                        alarmBean.getMinute(), alarmBean.getAlarmIds().get(i), Integer.parseInt(weeks[i]), alarmBean.getTips(), alarmBean.getSoundOrVibrator());
+                if(i!=0){
+
+                }
             }
         }
         saveAlarmBean();
@@ -182,8 +186,8 @@ public class Add1AlarmActivity extends AppCompatActivity implements View.OnClick
     }
 
     private int addAlarmId(){
-        Calendar Cld = Calendar.getInstance();
-        int alarmId = (int)Cld.getTimeInMillis();
+        Random random = new Random();
+        int alarmId = (int) System.currentTimeMillis() + random.nextInt(1000);
         LogUtils.i("------" + alarmId);
         return alarmId;
     }
@@ -365,9 +369,12 @@ public class Add1AlarmActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             case R.id.tv_right_text:
-
+                //
                 if(boo){
-                    AlarmManagerUtil.cancelAlarm(this,AlarmManagerUtil.ALARM_ACTION,alarmBean.getAlarmId());
+                    for (int i = 0;i<alarmBean.getAlarmIds().size();i++){
+                        AlarmManagerUtil.cancelAlarm(this,AlarmManagerUtil.ALARM_ACTION,alarmBean.getAlarmIds().get(i));
+                    }
+
                     ContentValues values = new ContentValues();
                     DataSupport.deleteAll( AlarmBean.class,"alarmId = ?",alarmBean.getAlarmId()+"");
                 }

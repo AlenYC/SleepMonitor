@@ -78,10 +78,11 @@ public class AlarmActivity extends BaseActivity{
         smrvAlarmList.setSwipeMenuItemClickListener(new SwipeMenuItemClickListener() {
             @Override
             public void onItemClick(SwipeMenuBridge menuBridge) {
-                DataSupport.deleteAll(AlarmBean.class,"alarmId = ?",""+list.get(menuBridge.getAdapterPosition()).getAlarmId());
-                list.remove(menuBridge.getAdapterPosition());
+                    DataSupport.deleteAll(AlarmBean.class,"alarmId = ?",""+list.get(menuBridge.getAdapterPosition()).getAlarmId());
+                    //DataSupport.deleteAll(AlarmBean.class,"hour > ?",""+0);
+                    list.remove(menuBridge.getAdapterPosition());
+
                 init();
-                LogUtils.i("---" + list.size());
             }
         });
         smrvAlarmList.setItemViewSwipeEnabled(false);

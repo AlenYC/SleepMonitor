@@ -5,12 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lzhz.lxh.sleepmonitor.home.bluetooth.BlueToothActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="?attr/colorPrimaryDark"
+        >
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/back_icon3x"
+
+            />
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/title_color"
+            android:text="添加闹钟"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:singleLine="true"
+            android:paddingRight="14dp"
+            android:text="存储"
+            android:textColor="@color/title_color"
+            android:textSize="16sp" />
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rl_bluetooth_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/tv_xian"
+        android:layout_below="@+id/toolbar"
         >
     </android.support.v7.widget.RecyclerView>
     <ProgressBar

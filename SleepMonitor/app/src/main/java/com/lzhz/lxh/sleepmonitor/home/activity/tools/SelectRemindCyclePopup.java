@@ -82,7 +82,7 @@ public class SelectRemindCyclePopup implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Drawable nav_right = mContext.getResources().getDrawable(R.drawable.cycle_check);
+        Drawable nav_right = mContext.getResources().getDrawable(R.mipmap.cycle_check);
         nav_right.setBounds(0, 0, nav_right.getMinimumWidth(), nav_right.getMinimumHeight());
         switch (v.getId()) {
             case R.id.tv_drugcycle_once:

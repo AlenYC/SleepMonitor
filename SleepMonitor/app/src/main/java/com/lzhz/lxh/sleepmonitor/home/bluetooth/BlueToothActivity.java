@@ -67,9 +67,9 @@ public class BlueToothActivity extends AppCompatActivity implements PermissionIn
     }
 
     public void setRootView() {
-        rlRefersh.setOnClickListener(this);
         ivRefersh.setOnClickListener(this);
         ivLeft.setOnClickListener(this);
+        tvRightText.setOnClickListener(this);
     }
 
     public void initData() {
@@ -132,11 +132,6 @@ public class BlueToothActivity extends AppCompatActivity implements PermissionIn
     }
 
     private void setAnim(View view) {
-       /* Animation animation = new RotateAnimation(0, 360);
-        animation.setDuration(2000);
-        animation.setRepeatCount(8);//动画的重复次数
-        animation.setFillAfter(true);//设置为true，动画转化结束后被应用
-        view.startAnimation(animation);//开始动画*/
         Animation circle_anim = AnimationUtils.loadAnimation(this, R.anim.anim_round_rotate);
         LinearInterpolator interpolator = new LinearInterpolator();  //设置匀速旋转，在xml文件中设置会出现卡顿
         circle_anim.setInterpolator(interpolator);
@@ -148,12 +143,6 @@ public class BlueToothActivity extends AppCompatActivity implements PermissionIn
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.rl_refresh:
-                LogUtils.i("-----------onClick");
-                mDevices.clear();
-                setAnim(ivRefersh);
-                scan();
-                break;
             case R.id.iv_refresh:
                 LogUtils.i("-----------ib_refresh");
                 mDevices.clear();
@@ -161,6 +150,9 @@ public class BlueToothActivity extends AppCompatActivity implements PermissionIn
                 scan();
                 break;
             case R.id.iv_left:
+                finish();
+                break;
+            case R.id.tv_right_text:
                 finish();
                 break;
         }

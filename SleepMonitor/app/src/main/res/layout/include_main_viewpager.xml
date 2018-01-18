@@ -9,9 +9,9 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation_bar"
+        android:layout_above="@+id/tv_xian"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
+<!--
     <android.support.design.widget.BottomNavigationView
         android:layout_alignParentBottom="true"
         android:id="@+id/bottom_navigation_bar"
@@ -19,6 +19,73 @@
         android:layout_height="wrap_content"
         android:background="@color/bnb_background"
         app:menu="@menu/activity_main_bottom"
+        />-->
+    <TextView
+        android:id="@+id/tv_xian"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/rg_radio_navigation"
+        android:background="@color/dibu"
         />
+    <RadioGroup
+        android:id="@+id/rg_radio_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+        <RadioButton
+            android:id="@+id/rb_radio_homepage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/homepage"
+            android:text="@string/homepage"
+            android:button="@null"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textColor="@drawable/radio_button_selector"
+            />
+        <RadioButton
+            android:id="@+id/rb_radio_subscription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/subscription"
+            android:text="@string/find"
+            android:button="@null"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textColor="@drawable/radio_button_selector"
+            />
+        <RadioButton
+            android:id="@+id/rb_radio_find"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/find"
+            android:text="@string/jieya"
+            android:button="@null"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textColor="@drawable/radio_button_selector"
+            />
+        <RadioButton
+            android:id="@+id/rb_radio_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/mine"
+            android:text="@string/qinyou"
+            android:button="@null"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textColor="@drawable/radio_button_selector"
+            />
+    </RadioGroup>
 
 </RelativeLayout>

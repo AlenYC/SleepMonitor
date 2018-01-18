@@ -28,4 +28,8 @@
     <string name="ring">铃声</string>
     <string name="zdong">震动</string>
     <string name="day">每天</string>
+    <string name="homepage">首页</string>
+    <string name="find">分析</string>
+    <string name="jieya">解压</string>
+    <string name="qinyou">亲友</string>
 </resources>

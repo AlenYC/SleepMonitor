@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    tools:context="com.lzhz.lxh.sleepmonitor.base.BaseAcitivity.CompanyIntroduceActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="深圳市量子慧智科技有限公司"
+        android:textSize="20sp"
+        android:textColor="@color/tv_black"
+        />
+    <TextView
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dibu"
+        />
+    <TextView
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="深圳市量子慧智科技有限公司是一家致力于人体生命体征和大健康物联网领域的高科技企业，      深圳市量子慧智科技有限公司是一家致力于人体生命体征和大健康物联网领域的高科技企业，     深圳市量子慧智科技有限公司是一家致力于人体生命体征和大健康物联网领域的高科技企业，深圳市量子慧智科技有限公司是一家致力于人体生命体征和大健康物联网领域的高科技企业，"
+        />
+</LinearLayout>

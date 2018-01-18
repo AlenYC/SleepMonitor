@@ -47,17 +47,27 @@
         android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
+        android:maxLines="1"
         android:text="密码" />
+
     <EditText
         android:id="@+id/et_code"
         android:layout_width="match_parent"
         android:layout_height="46dp"
+        android:layout_toLeftOf="@+id/tv_count_down"
         android:layout_toRightOf="@+id/bt_ss"
-        android:layout_toLeftOf="@+id/bt_get_code"
-        android:hint="请输入验证码"
-        android:textSize="14sp"
         android:background="@null"
-        android:inputType="phone" />
+        android:maxLines="1"
+        android:hint="请输入密码"
+        android:inputType="phone"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/tv_count_down"
+        android:layout_width="36dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        />
 
 
 </RelativeLayout>

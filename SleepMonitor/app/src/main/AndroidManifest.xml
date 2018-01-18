@@ -8,6 +8,15 @@
     <meta-data
         android:name="design_height"
         android:value="1920" />
+    <!-- 蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
 
     <application
         android:name=".SleepMonitorApplication"
@@ -20,28 +29,26 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.activity.AlarmActivity" android:launchMode="singleTask"/>
+        <activity
+            android:name=".home.activity.AlarmActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".sideslip.PersonalDetailsActivity" />
         <activity android:name=".sideslip.VersionsActivity" />
         <activity android:name=".relatives.InformationActivity" />
-        <activity android:name=".home.bluetooth.BlueToothActivity"></activity>
-        <activity android:name=".home.bluetooth.activity.DeviceDetailActivity"></activity>
-        <activity android:name=".home.activity.DetectionActivity">
-        </activity>
-        <activity android:name=".home.activity.AddAlarmActivity"></activity>
-        <activity android:name=".home.activity.Add1AlarmActivity">
-        </activity>
-        <service
-            android:name="com.inuker.bluetooth.library.BluetoothService" />
+        <activity android:name=".home.bluetooth.BlueToothActivity" />
+        <activity android:name=".home.bluetooth.activity.DeviceDetailActivity" />
+        <activity android:name=".home.activity.DetectionActivity"></activity>
+        <activity android:name=".home.activity.AddAlarmActivity" />
+        <activity android:name=".home.activity.Add1AlarmActivity"></activity>
+
+        <service android:name="com.inuker.bluetooth.library.BluetoothService" />
+
+        <activity android:name=".base.BaseAcitivity.CompanyIntroduceActivity"></activity>
     </application>
-   <!-- 蓝牙权限-->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
 </manifest>

@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.lzhz.lxh.sleepmonitor.R;
@@ -25,6 +26,11 @@ public class DecompressionFragment extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.tl_relat)
     Toolbar tlRelat;
+    @BindView(R.id.seekbar)
+    SeekBar seekbar;
+    @BindView(R.id.seekbar1)
+    SeekBar seekbar1;
+    private int newProgress = 0;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(
@@ -37,6 +43,8 @@ public class DecompressionFragment extends Fragment {
     private void init() {
         TextView title = tlRelat.findViewById(R.id.toolbar_title);
         title.setText("解压");
+        seekbar.setOnSeekBarChangeListener(seekBarChangeListener);
+        seekbar1.setOnSeekBarChangeListener(seekBarChangeListener);
     }
 
     @Override
@@ -44,4 +52,34 @@ public class DecompressionFragment extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+    private SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            newProgress = progress;
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            if (newProgress <= 28) {
+                newProgress = 0;
+                seekBar.setProgress(0);
+                return;
+            }
+            if (newProgress >= 73) {
+                newProgress = 100;
+                seekBar.setProgress(100);
+                return;
+            }
+            if (newProgress > 28 && newProgress < 73) {
+                newProgress = 50;
+                seekBar.setProgress(50);
+                return;
+            }
+        }
+    };
 }

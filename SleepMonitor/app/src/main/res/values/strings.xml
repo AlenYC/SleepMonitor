@@ -32,4 +32,55 @@
     <string name="find">分析</string>
     <string name="jieya">解压</string>
     <string name="qinyou">亲友</string>
+    <string name="start_use">开始使用</string>
+    <string name="net_fail">网络异常,请检查网络</string>
+
+    <string name="login">登 录</string>
+    <string name="regis">注 册</string>
+    <string name="tel_num">手机</string>
+    <string name="psw">密码</string>
+    <string name="forget_psw">忘记密码</string>
+    <string name="ensure">确 定</string>
+    <string name="tel_error">手机号错误</string>
+    <string name="pls_input_tel">请输入手机号</string>
+    <string name="pls_input_yzm">请输入验证码</string>
+    <string name="pls_input_psw">请输入密码</string>
+    <string name="pls_ensure_psw">请确认密码</string>
+    <string name="psw_ensure_error">两次输入密码不一致</string>
+    <string name="get_yzm">获取验证码</string>
+    <string name="send_success">发送成功</string>
+    <string name="ads">缓解打鼾消除疲劳，优化睡眠质量</string>
+
+    <string name="sending">正在发送</string>
+    <string name="registering">正在注册</string>
+    <string name="register_success">注册成功</string>
+    <string name="logining">正在登陆</string>
+    <string name="reset_psw">重置密码</string>
+    <string name="reset_success">重置成功</string>
+    <string name="loading">正在加载</string>
+    <string name="uploading">正在上传</string>
+    <string name="load_fail">加载失败</string>
+
+    <string name="avator">头像</string>
+    <string name="nickname">昵称</string>
+    <string name="username">姓名</string>
+    <string name="gender">性别</string>
+    <string name="height">身高</string>
+    <string name="weight">体重</string>
+    <string name="hanshi">鼾史</string>
+    <string name="birthday">生日</string>
+
+    <string name="gerenxinxi">个人信息修改</string>
+    <string name="update_userinfo">编辑个人信息</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="had">有</string>
+    <string name="none">无</string>
+    <string name="choise">请选择</string>
+    <string name="take_pic">拍摄一张</string>
+    <string name="choise_photo">从相册选择</string>
+    <string name="load_avator_fail">加载图片失败,请重新选择</string>
+    <string name="notice">提示</string>
+    <string name="update_success">修改成功</string>
+    <string name="logout_notice">是否退出当前账号？</string>
 </resources>

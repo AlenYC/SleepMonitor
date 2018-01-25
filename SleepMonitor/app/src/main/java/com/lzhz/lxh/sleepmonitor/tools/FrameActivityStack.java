@@ -154,5 +154,7 @@ public class FrameActivityStack {
             activityStack.remove(activity);
         }
     }
-
+    public static Activity getCurrentActivity() {
+        return activityStack.peek();
+    }
 }

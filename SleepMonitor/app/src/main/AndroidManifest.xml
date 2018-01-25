@@ -14,6 +14,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
@@ -27,28 +33,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".home.activity.AlarmActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".login.Login1Activity" />
+        <activity android:name=".login.ResetPswActivity" />
+        <activity android:name=".login.LauncherActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".home.activity.AlarmActivity"
-            android:launchMode="singleTask" />
-        <activity android:name=".login.LoginActivity" />
         <activity android:name=".sideslip.PersonalDetailsActivity" />
         <activity android:name=".sideslip.VersionsActivity" />
         <activity android:name=".relatives.InformationActivity" />
         <activity android:name=".home.bluetooth.BlueToothActivity" />
         <activity android:name=".home.bluetooth.activity.DeviceDetailActivity" />
         <activity android:name=".home.activity.DetectionActivity"></activity>
-        <activity android:name=".home.activity.AddAlarmActivity" />
+
         <activity android:name=".home.activity.Add1AlarmActivity"></activity>
 
         <service android:name="com.inuker.bluetooth.library.BluetoothService" />
 
         <activity android:name=".base.BaseAcitivity.CompanyIntroduceActivity"></activity>
+        <activity android:name=".home.activity.UserInfoActivity"></activity>
     </application>
 
 </manifest>

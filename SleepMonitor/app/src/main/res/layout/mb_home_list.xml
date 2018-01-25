@@ -72,7 +72,7 @@
               app:linsSize="14sp"
               />
 
-          <ProgressBar
+        <!--  <ProgressBar
               android:id="@+id/sb_jindu"
               android:layout_width="match_parent"
               android:layout_height="16dp"
@@ -82,7 +82,17 @@
               android:progress="60"
               android:max="100"
               android:progressDrawable="@drawable/progressbar"
-              />
+              />-->
+
+          <ProgressBar
+              android:id="@+id/sb_jindu"
+              style="?android:attr/progressBarStyleHorizontal"
+              android:layout_width="match_parent"
+              android:layout_height="12dp"
+              android:layout_marginTop="10dp"
+              android:background="@drawable/pb_bg"
+              android:progress="11"
+              android:progressDrawable="@drawable/bg_pb_progress" />
           <RelativeLayout
               android:layout_width="match_parent"
               android:layout_height="36dp">

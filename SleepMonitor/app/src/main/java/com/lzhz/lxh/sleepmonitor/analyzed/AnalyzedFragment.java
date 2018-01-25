@@ -28,7 +28,8 @@ import butterknife.Unbinder;
  * 分析
  */
 
-public class AnalyzedFragment extends Fragment implements View.OnClickListener {
+public class
+AnalyzedFragment extends Fragment implements View.OnClickListener {
     Unbinder unbinder;
     ArrayList<Point> pointList;
     int[] count;
@@ -48,8 +49,6 @@ public class AnalyzedFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
         View view = inflater.inflate(
                 R.layout.analyzed_fragment_layout, container, false);
         unbinder = ButterKnife.bind(this, view);

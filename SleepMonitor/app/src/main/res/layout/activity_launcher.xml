@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/logo" />
+
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/bg_bt_launcher"
+        android:minWidth="120dp"
+        android:padding="10dp"
+        android:text="@string/start_use"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
+
+</LinearLayout>

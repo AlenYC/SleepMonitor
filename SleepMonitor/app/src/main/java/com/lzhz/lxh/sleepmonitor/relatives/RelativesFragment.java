@@ -63,6 +63,13 @@ public class RelativesFragment extends Fragment {
         title.setText(R.string.qingy);
         rightTop.setVisibility(View.VISIBLE);
         rightTop.setImageResource(R.mipmap.heart_message_icon3x);
+
+        rightTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().startActivity(new Intent(getActivity(), InformationActivity.class));
+            }
+        });
         context = getActivity();
         listLins = new ArrayList<>();
         initData();
@@ -90,7 +97,7 @@ public class RelativesFragment extends Fragment {
         adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(RecyclerView parent, View view, int position) {
-                getActivity().startActivity(new Intent(getActivity(), InformationActivity.class));
+
             }
         });
     }

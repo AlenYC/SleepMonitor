@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_regis_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@null"
+        android:hint="@string/pls_input_tel"
+        android:inputType="number"
+        android:maxLength="11"
+        android:textColorHint="@color/text_color_regis" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:background="@color/gray_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/et_regis_yzm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/pls_input_yzm"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColorHint="@color/text_color_regis" />
+
+        <TextView
+            android:id="@+id/tv_get_yzm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_yzm"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:background="@color/gray_line" />
+
+    <EditText
+        android:id="@+id/et_regis_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@null"
+        android:hint="@string/pls_input_psw"
+        android:inputType="textPassword"
+        android:maxLength="11"
+        android:textColorHint="@color/text_color_regis" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:background="@color/gray_line" />
+
+    <EditText
+        android:id="@+id/et_regis_re_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@null"
+        android:hint="@string/pls_ensure_psw"
+        android:inputType="textPassword"
+        android:maxLength="11"
+        android:textColorHint="@color/text_color_regis" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:background="@color/gray_line" />
+
+    <Button
+        android:id="@+id/bt_regis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/se_regis_bt_bg"
+        android:enabled="false"
+        android:text="@string/ensure"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+</LinearLayout>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#232C49</color>
+    <color name="colorPrimary1">#3F51B5</color>
     <color name="colorPrimaryDark">#2D355A</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent1">#6799CA</color>
     <color name="title_color">#86B4E8</color>
     <color name="bnb_background">#F4F5F9</color>
-
     <!--线条背景-->
     <color name="dibu">#DDDDDD</color>
     <color name="bg_color">#F4F5F9</color>
@@ -16,10 +17,10 @@
     <color name="red_pressed">#FF6666</color>
     <color name="tv_danse">#84899C</color>
     <color name="tv_black">#242A4D</color>
-
+    <color name="text_color">#87BBEE</color>
     <color name="device_detail_service">#cccccc</color>
     <color name="device_detail_character">#ffffff</color>
-
+    <color name="gray_line">#c0c0c0</color>
     <color name="chart_top_color">#F5703C</color>
     <color name="histogram_1_color">#5755A0</color>
     <color name="histogram_2_color">#4681B9</color>
@@ -45,4 +46,15 @@
     <color name="half_transparent_black">#BB000000</color>
     <color name="light_black">#141414</color>
     <color name="line_and_outline_grey">#d9d9d9</color>
+
+    <color name="text_uncheck">#82899D</color>
+    <color name="text_checked">#3B4E71</color>
+    <color name="text_color_temp">#F27242</color>
+    <color name="text_color_regis">#D8DCE7</color>
+    <color name="text_color2">#C6C7CE</color>
+    <color name="text_color3">#4F729A</color>
+    <color name="color_progress_bg">#4BBC88</color>
+    <color name="trans">#00000000</color>
+    <color name="color_bg_anasys">#F4F5F9</color>
+    <color name="black">#000000</color>
 </resources>

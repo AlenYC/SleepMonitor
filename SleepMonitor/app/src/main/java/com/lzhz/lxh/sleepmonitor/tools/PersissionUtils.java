@@ -22,6 +22,7 @@ import me.weyye.hipermission.PermissionItem;
 
 public class PersissionUtils {
     private static PermissionInter permissionInter;
+
     public static void setOnPermissionInter(PermissionInter permission){
         permissionInter = permission;
     }
@@ -31,6 +32,33 @@ public class PersissionUtils {
         permissonItems.add(permission);
         HiPermission.create(context)
                 .permissions(permissonItems)
+                .checkMutiPermission(new PermissionCallback() {
+                    @Override
+                    public void onClose() {
+                        ToastUtil.showShort(context,R.string.permission_on_close);
+                        permissionInter.onClose();
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        permissionInter.onFinish();
+                    }
+
+                    @Override
+                    public void onDeny(String permission, int position) {
+                        permissionInter.onDeny();
+                    }
+
+                    @Override
+                    public void onGuarantee(String permission, int position) {
+                        permissionInter.onGuarantee();
+                    }
+                });
+
+    }
+    public static void setPermissionList(final Context context, List<PermissionItem> permission){
+        HiPermission.create(context)
+                .permissions(permission)
                 .checkMutiPermission(new PermissionCallback() {
                     @Override
                     public void onClose() {

@@ -10,20 +10,43 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.request.RequestOptions;
 import com.lzhz.lxh.sleepmonitor.analyzed.AnalyzeDetailsFragment;
 import com.lzhz.lxh.sleepmonitor.analyzed.AnalyzedFragment;
 import com.lzhz.lxh.sleepmonitor.base.BaseAcitivity.CompanyIntroduceActivity;
 import com.lzhz.lxh.sleepmonitor.decompression.DecompressionFragment;
 import com.lzhz.lxh.sleepmonitor.home.HomeFragment;
+import com.lzhz.lxh.sleepmonitor.home.activity.UserInfoActivity;
+import com.lzhz.lxh.sleepmonitor.home.activity.bean.User;
 import com.lzhz.lxh.sleepmonitor.home.adapter.FragmentAdapter;
+import com.lzhz.lxh.sleepmonitor.login.LoginActivity;
 import com.lzhz.lxh.sleepmonitor.relatives.RelativesFragment;
 import com.lzhz.lxh.sleepmonitor.sideslip.PersonalDetailsActivity;
 import com.lzhz.lxh.sleepmonitor.sideslip.VersionsActivity;
+import com.lzhz.lxh.sleepmonitor.tools.Constance;
+import com.lzhz.lxh.sleepmonitor.tools.GlideCircleTransform;
 import com.lzhz.lxh.sleepmonitor.tools.LogUtils;
+import com.lzhz.lxh.sleepmonitor.tools.Net.NetCallBack;
+import com.lzhz.lxh.sleepmonitor.tools.Net.NetParamas;
+import com.lzhz.lxh.sleepmonitor.tools.Net.NetUtil;
+import com.lzhz.lxh.sleepmonitor.tools.SPUtil;
 import com.lzhz.lxh.sleepmonitor.tools.view.NoScrollViewPager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,13 +63,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout dlHome;
     @BindView(R.id.rg_radio_navigation)
     RadioGroup rgRadioNavigation;
-
-
+    ImageView ivHead_portrait;
+    TextView tvUserName;
+    RequestOptions options;
+    View headerLayout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
         initViews();
         viewPager.setCurrentItem(0);
         viewPager.setNoScroll(true);
@@ -55,9 +81,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void openDrawer() {
         dlHome.openDrawer(navView);
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void userEventBus(User user){
+            Glide.with(MainActivity.this).load(user.getPortrait()).apply(options).into(ivHead_portrait);
+            tvUserName.setText(user.getName());
+    }
 
     public void initViews() {
+       // headerLayout  = navView.inflateHeaderView(R.layout.nav_header);
+        headerLayout = navView.getHeaderView(0);
+        tvUserName = headerLayout.findViewById(R.id.tv_user_name);
+        ivHead_portrait = headerLayout.findViewById(R.id.iv_head_portrait);
 
+        options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.mipmap.user)
+                .error(R.mipmap.user)
+                .priority(Priority.HIGH).transform(new GlideCircleTransform(this));
+
+        String headImage = SPUtil.getInstance(getApplicationContext()).getString("userPortrait");
+        String userName = SPUtil.getInstance(getApplicationContext()).getString("userName");
+        if(headImage!=null||"".equals(headImage))
+        Glide.with(MainActivity.this).load(headImage).apply(options).into(ivHead_portrait);
+        if(userName!=null||"".equals(userName))
+            tvUserName.setText(userName);
         if (viewPager != null) {
             rgRadioNavigation.setOnCheckedChangeListener(this);
             rgRadioNavigation.check(R.id.rb_radio_homepage);
@@ -87,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             setupViewPager(viewPager);
         }
         navView.setNavigationItemSelectedListener(this);
+        getUserInfo();
     }
 
     public void setAnalyze() {
@@ -113,7 +161,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             //个人信息
             case R.id.it_plm:
-                startActivity(new Intent(this, PersonalDetailsActivity.class));
+               // startActivity(new Intent(this, PersonalDetailsActivity.class));
+                startActivity(new Intent(this, UserInfoActivity.class));
                 break;
             case R.id.it_version_information:
                 startActivity(new Intent(this, VersionsActivity.class));
@@ -152,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     //退出提示框
     public void onBackPressed() {
-        new AlertDialog.Builder(this).setTitle("确认退出吗？")
+       /* new AlertDialog.Builder(this).setTitle("确认退出吗？")
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -166,6 +215,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onClick(DialogInterface dialog, int which) {
                         // 点击“返回”后的操作,这里不设置没有任何操作
                     }
-                }).show();
+                }).show();*/
+
+        showDialog(getString(R.string.notice), getString(R.string.logout_notice), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SleepMonitorApplication.access_token = "";
+                SPUtil.getInstance(MainActivity.this).clear();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
+    void showDialog(String title, String msg, DialogInterface.OnClickListener listner) {
+        new android.support.v7.app.AlertDialog.Builder(this).setTitle(title).setMessage(msg).setPositiveButton(android.R.string.ok, listner).setNegativeButton(
+                android.R.string.cancel, null).create().show();
+    }
+
+    private void getUserInfo() {
+        NetParamas netParamas = new NetParamas();
+        netParamas.put("access_token", SleepMonitorApplication.access_token);
+        NetUtil.get(Constance.HTTP_GET_INFO, netParamas, new NetCallBack() {
+            @Override
+            public void onResponse(JSONObject j) {
+                try {
+                    JSONObject result = j.getJSONObject("data");
+                   SleepMonitorApplication.user = JSON.parseObject(result.toString(), User.class);
+                    if (SleepMonitorApplication.user != null) {
+                        Glide.with(MainActivity.this).load(SleepMonitorApplication.user.getPortrait()).apply(options).into(ivHead_portrait);
+                        tvUserName.setText(SleepMonitorApplication.user.getName());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, getString(R.string.loading), this);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //注销注册
+        EventBus.getDefault().unregister(this);
+    }
+
 }

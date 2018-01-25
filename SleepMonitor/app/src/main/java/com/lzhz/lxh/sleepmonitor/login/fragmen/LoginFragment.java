@@ -41,6 +41,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     }
     private void init(){
         btSs.setOnClickListener(this);
+
     }
 
     @Override

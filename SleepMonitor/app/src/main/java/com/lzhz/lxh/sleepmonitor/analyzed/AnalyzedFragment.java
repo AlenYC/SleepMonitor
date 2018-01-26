@@ -34,6 +34,7 @@ AnalyzedFragment extends Fragment implements View.OnClickListener {
     ArrayList<Point> pointList;
     int[] count;
     int[] count1;
+    int[] count2;
     String[] date = {"5/21", "5/22", "5/23", "5/24", "5/25", "5/26", "5/27", "5/28", "5/29", "5/30",};
     @BindView(R.id.cv_line)
     ChartView cvLine;
@@ -65,12 +66,15 @@ AnalyzedFragment extends Fragment implements View.OnClickListener {
         Random random = new Random();
         count = new int[11];
         count1 = new int[11];
+        count2 = new int[10];
         for (int i = 0; i <= 10; i++) {
             count[i] = random.nextInt(100);
             count1[i] = random.nextInt(100);
+            if(i!=10)
+            count2[i] = random.nextInt(100);
         }
         //给ChartView设置坐标
-        cvLine.setCount(count, date);
+        cvLine.setCount(count2, date);
         hvCount.setData(count);
         hvRoundView.setCount(count, date);
         rwvRound1.setCount(count1, date);

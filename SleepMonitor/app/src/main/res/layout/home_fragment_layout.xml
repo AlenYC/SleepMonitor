@@ -8,7 +8,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:background="?attr/colorPrimaryDark"
@@ -91,7 +91,7 @@
         >
 
 
-    <LinearLayout
+    <com.lzhz.lxh.sleepmonitor.tools.view.BgLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -114,7 +114,7 @@
             android:text="5月30日 检测心率90次分"
             android:textSize="@dimen/size12"
             android:textColor="@color/home_lan"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="18dp"
             />
 
         <Button
@@ -123,13 +123,14 @@
             android:layout_height="30dp"
             android:text="立即检测"
             android:layout_marginTop="18dp"
-            android:layout_marginBottom="18dp"
+            android:layout_marginBottom="20dp"
             android:textSize="@dimen/size14"
             android:textColor="@color/white"
             android:background="@drawable/selector_buttom_home"
             />
 
-    </LinearLayout>
+    </com.lzhz.lxh.sleepmonitor.tools.view.BgLinearLayout>
+
     </android.support.design.widget.AppBarLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_home_list"

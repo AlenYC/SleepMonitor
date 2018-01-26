@@ -158,17 +158,17 @@ public class ChartView extends View {
           return;
       }
       float xHeight = mViewHeight/3;
-      float xwidth = mViewWidth/11*10;
+      float xwidth = mViewWidth-80;
         for(int i=0;i<count.length-1;i++){
             //坐标系内的点的位置
             float startX;
             if(i == 0){
                  startX = 80;
             }else{
-                 startX = xwidth/count.length *i+80;
+                 startX = xwidth/count.length *i+90;
             }
             float startY = xHeight/100*count[i] + xHeight;
-            float endX = xwidth/count.length *(i+1)+80;
+            float endX = xwidth/count.length *(i+1)+90;
             float endY = xHeight/100*count[i+1] + xHeight;
             //画折线图  圆点
             canvas.drawLine(startX,startY,endX,endY,mPaintLine);

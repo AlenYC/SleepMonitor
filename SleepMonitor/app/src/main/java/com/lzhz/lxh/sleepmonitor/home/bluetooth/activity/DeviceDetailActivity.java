@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.inuker.bluetooth.library.connect.listener.BleConnectStatusListener;
 import com.inuker.bluetooth.library.connect.options.BleConnectOptions;
 import com.inuker.bluetooth.library.connect.response.BleConnectResponse;
+import com.inuker.bluetooth.library.connect.response.BleNotifyResponse;
 import com.inuker.bluetooth.library.model.BleGattProfile;
 import com.inuker.bluetooth.library.search.SearchResult;
 import com.inuker.bluetooth.library.utils.BluetoothLog;
@@ -21,7 +22,10 @@ import com.lzhz.lxh.sleepmonitor.base.BaseActivity;
 import com.lzhz.lxh.sleepmonitor.home.bluetooth.adapter.DeviceDetailAdapter;
 import com.lzhz.lxh.sleepmonitor.home.bluetooth.bean.DetailItem;
 import com.lzhz.lxh.sleepmonitor.tools.ClientManager;
+import com.lzhz.lxh.sleepmonitor.tools.Constance;
+import com.lzhz.lxh.sleepmonitor.tools.LogUtils;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 import static com.inuker.bluetooth.library.Constants.REQUEST_SUCCESS;
@@ -129,6 +133,55 @@ public class DeviceDetailActivity extends BaseActivity {
                 }
             }
         });
+        ClientManager.getClient().notify(mDevice.getAddress(),UUID.fromString(Constance.UUID_CHAR_SERVICE),UUID.fromString(Constance.UUID_CHAR_READ),new BleNotifyResponse(){
+
+            @Override
+            public void onResponse(int code) {
+                if (code == REQUEST_SUCCESS) {
+
+                }
+            }
+            @Override
+            public void onNotify(UUID service, UUID character, byte[] value) {
+
+               // LogUtils.i("-------"+byteArrayToInt(value));
+                LogUtils.i("-------"+byteToInt(value[0]));
+                //LogUtils.i("-------"+value[0]);
+              //  LogUtils.i("-------"+Arrays.toString(value));
+
+            }
+        });
+    }
+    public static String bytesToHexString(byte[] b, boolean isSpace) {
+        String stmp = "";
+        StringBuilder sb = new StringBuilder("");
+        for (int n = 0; n < b.length; n++) {
+            stmp = Integer.toHexString(b[n] & 0xFF);
+            sb.append((stmp.length() == 1) ? "0" + stmp : stmp);
+            if (isSpace) sb.append(" ");
+        }
+        return sb.toString().toUpperCase().trim();
+    }
+    public static int byteToInt(byte b) {
+        return b & 0xFF;
+    }
+    public static int byteArrayToInt(byte[] b) {
+        return   b[3] & 0xFF |
+                (b[2] & 0xFF) << 8 |
+                (b[1] & 0xFF) << 16 |
+                (b[0] & 0xFF) << 24;
+    }
+    //高位在前，低位在后
+    public static int bytes2int(byte[] bytes){
+        int result = 0;
+        if(bytes.length == 4){
+            int a = (bytes[0] & 0xff) << 24;//说明二
+            int b = (bytes[1] & 0xff) << 16;
+            int c = (bytes[2] & 0xff) << 8;
+            int d = (bytes[3] & 0xff);
+            result = a | b | c | d;
+        }
+        return result;
     }
 
     private void connectDeviceIfNeeded() {

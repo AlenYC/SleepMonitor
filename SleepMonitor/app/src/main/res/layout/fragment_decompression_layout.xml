@@ -232,12 +232,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="14dp"
-                android:layout_marginTop="14dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-
+                android:background="@color/white"
                 >
 
                 <TextView
@@ -298,7 +298,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
 
                 android:background="@color/white"
                 android:padding="10dp">

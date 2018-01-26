@@ -242,8 +242,14 @@ public class Login1Activity extends BaseActivity implements View.OnClickListener
             public void onResponse(JSONObject result) {
                 try {
                     SleepMonitorApplication.access_token = result.getJSONObject("data").getString("access_token");
-                    spUtil.put(Constance.KEY_TEL, tel);
-                    spUtil.put(Constance.KEY_PSW, psw);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            spUtil.put(Constance.KEY_TEL, tel);
+                            spUtil.put(Constance.KEY_PSW, psw);
+                        }
+                    }).start();
+
                     startActivity(new Intent(Login1Activity.this, MainActivity.class));
                     finish();
                 } catch (JSONException e) {

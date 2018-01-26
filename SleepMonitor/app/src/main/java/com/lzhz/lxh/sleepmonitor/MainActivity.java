@@ -30,6 +30,7 @@ import com.lzhz.lxh.sleepmonitor.home.HomeFragment;
 import com.lzhz.lxh.sleepmonitor.home.activity.UserInfoActivity;
 import com.lzhz.lxh.sleepmonitor.home.activity.bean.User;
 import com.lzhz.lxh.sleepmonitor.home.adapter.FragmentAdapter;
+import com.lzhz.lxh.sleepmonitor.login.Login1Activity;
 import com.lzhz.lxh.sleepmonitor.login.LoginActivity;
 import com.lzhz.lxh.sleepmonitor.relatives.RelativesFragment;
 import com.lzhz.lxh.sleepmonitor.sideslip.PersonalDetailsActivity;
@@ -222,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(DialogInterface dialog, int which) {
                 SleepMonitorApplication.access_token = "";
                 SPUtil.getInstance(MainActivity.this).clear();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, Login1Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

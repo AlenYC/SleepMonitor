@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ModuleDemo</string>
+    <string name="permission_on_close">用户关闭权限申请</string>
+</resources>

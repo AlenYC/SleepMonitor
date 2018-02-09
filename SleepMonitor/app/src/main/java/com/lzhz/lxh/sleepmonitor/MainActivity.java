@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ import com.lzhz.lxh.sleepmonitor.tools.Net.NetCallBack;
 import com.lzhz.lxh.sleepmonitor.tools.Net.NetParamas;
 import com.lzhz.lxh.sleepmonitor.tools.Net.NetUtil;
 import com.lzhz.lxh.sleepmonitor.tools.SPUtil;
+import com.lzhz.lxh.sleepmonitor.tools.jni.JNIUtils;
 import com.lzhz.lxh.sleepmonitor.tools.view.NoScrollViewPager;
 
 import org.greenrobot.eventbus.EventBus;
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initViews();
         viewPager.setCurrentItem(0);
         viewPager.setNoScroll(true);
+        //String detect = new JNIUtils().detect0131();
+        //Log.i("detect",detect);
     }
 
     public void openDrawer() {
@@ -162,7 +166,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             //个人信息
             case R.id.it_plm:
-               // startActivity(new Intent(this, PersonalDetailsActivity.class));
                 startActivity(new Intent(this, UserInfoActivity.class));
                 break;
             case R.id.it_version_information:
@@ -202,22 +205,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     //退出提示框
     public void onBackPressed() {
-       /* new AlertDialog.Builder(this).setTitle("确认退出吗？")
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 点击“确认”后的操作
-                        MainActivity.this.finish();
-                    }
-                })
-                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 点击“返回”后的操作,这里不设置没有任何操作
-                    }
-                }).show();*/
-
         showDialog(getString(R.string.notice), getString(R.string.logout_notice), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

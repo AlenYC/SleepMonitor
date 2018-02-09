@@ -15,14 +15,17 @@ import java.util.Calendar;
  */
 public class AlarmManagerUtil {
     public static final String ALARM_ACTION = "com.loonggg.alarmmanager.alarm.clock";
-
+    private static int mHour;
+    private static int mMinute;
     public static void setAlarmTime(Context context, long timeInMillis, Intent intent) {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent sender = PendingIntent.getBroadcast(context, intent.getIntExtra("id", 0),
                 intent, PendingIntent.FLAG_CANCEL_CURRENT);
         int interval = (int) intent.getLongExtra("intervalMillis", 0);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            am.setWindow(AlarmManager.RTC_WAKEUP, timeInMillis, interval, sender);
+           // am.setWindow(AlarmManager.RTC_WAKEUP, timeInMillis, interval, sender);
+            am.setExact(AlarmManager.RTC_WAKEUP, timeInMillis,
+                    sender);
         }
     }
 
@@ -47,7 +50,8 @@ public class AlarmManagerUtil {
     public static void setAlarm(Context context, int flag, int hour, int minute, int id, int
             week, String tips, int soundOrVibrator) {
         Log.i("setAlarm", "flag = " + flag +"hour = " + hour +"minute = " + minute +"id = " + id +"week = " + week +"tips = " + tips +"soundOrVibrator =" +soundOrVibrator);
-
+        //提前十分钟开始
+        setTime(hour,minute);
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Calendar calendar = Calendar.getInstance();
         long intervalMillis = 0;
@@ -56,7 +60,8 @@ public class AlarmManagerUtil {
         int DAY_OF_MONTH = calendar.get(Calendar.DAY_OF_MONTH);
         Log.i("year",year +"--" + MONTH +"--"+ DAY_OF_MONTH);
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get
-                (Calendar.DAY_OF_MONTH), hour, minute, 10);
+                (Calendar.DAY_OF_MONTH), mHour, mMinute, 10);
+        Log.i("setAlarm","mHour = " + mHour + "--- mMinute = " + mMinute);
         if (flag == 0) {
             intervalMillis = 0;
         } else if (flag == 1) {
@@ -73,13 +78,14 @@ public class AlarmManagerUtil {
         PendingIntent sender = PendingIntent.getBroadcast(context, id, intent, PendingIntent
                 .FLAG_CANCEL_CURRENT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Log.i("setWindow--------" , calMethod(week, calendar.getTimeInMillis())+ "----intervalMillis--" + intervalMillis);
+            //Log.i("setWindow--------" , calMethod(week, calendar.getTimeInMillis())+ "----intervalMillis--" + intervalMillis);
            /* am.setRepeating(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),
                     intervalMillis, sender);*/
           /*  am.setWindow(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),
                     intervalMillis, sender);*/
             am.setExact(AlarmManager.RTC_WAKEUP, calMethod(week, calendar.getTimeInMillis()),
                      sender);
+
         } else {
             if (flag == 0) {
                 am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
@@ -88,6 +94,19 @@ public class AlarmManagerUtil {
                         ()), intervalMillis, sender);
             }
         }
+    }
+    /**
+     * 提前十分钟开始
+     */
+    private static void setTime(int hour,int minute){
+                if(minute < 10){
+                    mMinute = minute + 50;
+                    if(hour == 0) mHour = 23;
+                    else mHour = hour - 1;
+                }else {
+                    mMinute = minute - 10;
+                    mHour = hour;
+                }
     }
 
     /**

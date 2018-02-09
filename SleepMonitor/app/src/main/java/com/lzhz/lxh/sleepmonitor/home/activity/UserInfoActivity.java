@@ -165,7 +165,9 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         netParamas.put("access_token", SleepMonitorApplication.access_token);
         netParamas.put("nickname", user.getNickname());
         netParamas.put("name", user.getName());
+        if(user.getPortrait() != null)
         netParamas.put("portrait", user.getPortrait());
+        else netParamas.put("portrait", "");
         netParamas.put("height", user.getHeight());
         netParamas.put("weight", user.getWeight());
         netParamas.put("gender", user.getGender() + "");

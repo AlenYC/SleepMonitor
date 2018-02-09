@@ -5,6 +5,8 @@ import android.app.Application;
 
 import com.inuker.bluetooth.library.BluetoothContext;
 import com.lzhz.lxh.sleepmonitor.home.activity.bean.User;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import org.litepal.LitePal;
 import org.litepal.LitePalApplication;
@@ -18,6 +20,7 @@ import java.util.Stack;
 
 public class SleepMonitorApplication extends LitePalApplication {
     private static SleepMonitorApplication instance;
+    private RefWatcher mRefWatcher;
     public static String access_token;
     public static User user;
 
@@ -31,6 +34,7 @@ public class SleepMonitorApplication extends LitePalApplication {
         instance = this;
         BluetoothContext.set(this);
         LitePal.initialize(this);
+        mRefWatcher = LeakCanary.install(this);
 
     }
 

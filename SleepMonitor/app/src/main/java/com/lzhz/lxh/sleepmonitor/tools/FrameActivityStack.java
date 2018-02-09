@@ -155,6 +155,9 @@ public class FrameActivityStack {
         }
     }
     public static Activity getCurrentActivity() {
+        if (activityStack == null) {
+            return null;
+        }
         return activityStack.peek();
     }
 }

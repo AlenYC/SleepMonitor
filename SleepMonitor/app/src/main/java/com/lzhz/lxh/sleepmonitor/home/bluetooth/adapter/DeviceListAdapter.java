@@ -1,25 +1,16 @@
 package com.lzhz.lxh.sleepmonitor.home.bluetooth.adapter;
 
-import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-
 import com.allen.library.SuperTextView;
-import com.inuker.bluetooth.library.beacon.Beacon;
 import com.inuker.bluetooth.library.search.SearchResult;
 import com.lzhz.lxh.sleepmonitor.R;
 import com.lzhz.lxh.sleepmonitor.home.bluetooth.activity.DeviceDetailActivity;
-import com.lzhz.lxh.sleepmonitor.tools.LogUtils;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**

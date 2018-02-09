@@ -46,6 +46,7 @@ public class HistogramView extends View {
 
     private void getAttrs(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs,R.styleable.ChartView);
+
         lineGrayColor = ta.getColor(R.styleable.ChartView_lineGrayColor, Color.YELLOW);
         lineGray1Color = ta.getColor(R.styleable.ChartView_textGrayColor, Color.YELLOW);
         lineGraySize = ta.getDimension(R.styleable.ChartView_lineGraySize,30);

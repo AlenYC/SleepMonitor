@@ -48,6 +48,7 @@ public abstract class NetCallBack implements Callback {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    if(FrameActivityStack.getCurrentActivity()!=null)
                     Tool.showToast(FrameActivityStack.getCurrentActivity(), FrameActivityStack.getCurrentActivity().getString(R.string.net_fail));
                 } finally {
                     Tool.removeProgressDialog();

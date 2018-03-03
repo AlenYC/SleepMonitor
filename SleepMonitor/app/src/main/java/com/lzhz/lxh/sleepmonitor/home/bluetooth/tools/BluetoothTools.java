@@ -19,6 +19,7 @@ public class BluetoothTools {
     private  scanTool con;
     private static BluetoothTools bluetoothTools;
     private static BluetoothClient mClient;
+
     private BluetoothTools(){}
     public static BluetoothTools getInstance(){
         synchronized (BluetoothTools.class){

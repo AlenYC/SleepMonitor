@@ -110,8 +110,13 @@ public class DeviceDetailActivity extends BaseActivity {
         startActivity(intent);*/
     }
 
+    /**
+     * 蓝牙连接
+     */
     private void connectDevice() {
-        mPbar.setVisibility(View.VISIBLE);
+        ClientManager.getInstance().connectDevice(mDevice);
+
+      /*  mPbar.setVisibility(View.VISIBLE);
         mListView.setVisibility(View.GONE);
 
         BleConnectOptions options = new BleConnectOptions.Builder()
@@ -144,13 +149,12 @@ public class DeviceDetailActivity extends BaseActivity {
             @Override
             public void onNotify(UUID service, UUID character, byte[] value) {
 
-               // LogUtils.i("-------"+byteArrayToInt(value));
+                LogUtils.i("-------"+byteArrayToInt(value));
                 LogUtils.i("-------"+byteToInt(value[0]));
                 //LogUtils.i("-------"+value[0]);
               //  LogUtils.i("-------"+Arrays.toString(value));
-
             }
-        });
+        });*/
     }
     public static String bytesToHexString(byte[] b, boolean isSpace) {
         String stmp = "";

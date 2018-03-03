@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.lzhz.lxh.sleepmonitor.tools.view.BjView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="#232C49">
+        <com.lzhz.lxh.sleepmonitor.tools.view.Cardiograph1View
+            android:id="@+id/cv_xdt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null" />
+    </com.lzhz.lxh.sleepmonitor.tools.view.BjView>
+</LinearLayout>

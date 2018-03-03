@@ -34,8 +34,6 @@ public class BgLinearLayout extends LinearLayout {
     //小网格的宽度
     protected int mSGridWidth = 10;
 
-    //心电图折现
-    protected Path mPath ;
     public BgLinearLayout(Context context) {
         super(context,null);
     }
@@ -43,7 +41,6 @@ public class BgLinearLayout extends LinearLayout {
     public BgLinearLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs,0);
         mPaint = new Paint();
-        mPath = new Path();
     }
 
     @Override

@@ -80,6 +80,7 @@ public class ChartView extends View {
 
     //初始化画笔
     private void InitPaint() {
+
         mPaintLine = new Paint(Paint.ANTI_ALIAS_FLAG);
         //设置画线
         mPaintLine.setStyle(Paint.Style.STROKE);

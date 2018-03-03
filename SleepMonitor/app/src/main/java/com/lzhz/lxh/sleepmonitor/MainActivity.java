@@ -27,6 +27,7 @@ import com.lzhz.lxh.sleepmonitor.analyzed.AnalyzeDetailsFragment;
 import com.lzhz.lxh.sleepmonitor.analyzed.AnalyzedFragment;
 import com.lzhz.lxh.sleepmonitor.base.BaseAcitivity.CompanyIntroduceActivity;
 import com.lzhz.lxh.sleepmonitor.decompression.DecompressionFragment;
+import com.lzhz.lxh.sleepmonitor.home.CardiographFragment;
 import com.lzhz.lxh.sleepmonitor.home.HomeFragment;
 import com.lzhz.lxh.sleepmonitor.home.activity.UserInfoActivity;
 import com.lzhz.lxh.sleepmonitor.home.activity.bean.User;
@@ -50,6 +51,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -79,8 +82,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initViews();
         viewPager.setCurrentItem(0);
         viewPager.setNoScroll(true);
-        //String detect = new JNIUtils().detect0131();
-        //Log.i("detect",detect);
+
+        dyJNI();
+    }
+
+    public void dyJNI(){
+        double raw_data[] = new double[30000];
+        for (int i = 0;i < 30000;i++){
+            if(i%2==0)
+                raw_data[i] = 0;
+            else
+                raw_data[i] = 255;
+        }
+        double hbrRes[]= new double[2];
+        double HD[]= new double[300];
+        double RD[]= new double[300];
+        double snore[]= new double[3000];
+
+        JNIUtils.detect0131(raw_data,hbrRes,HD,RD,snore);
+
+        System.out.println("单片机原始数据 : " + Arrays.toString(raw_data));
+
+        System.out.println("心率值 : " + hbrRes[0]);
+        System.out.println("呼吸速率 : " + hbrRes[1]);
+        System.out.println("心跳数据 : " + Arrays.toString(HD));
+        System.out.println("呼吸数据 : " + Arrays.toString(RD));
+        System.out.println("鼾声数据 : " + Arrays.toString(snore));
     }
 
     public void openDrawer() {
@@ -154,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setupViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
+        //adapter.addFragment(new CardiographFragment());
         adapter.addFragment(new AnalyzedFragment());
         adapter.addFragment(new DecompressionFragment());
         adapter.addFragment(new RelativesFragment());
@@ -246,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onDestroy() {
         super.onDestroy();
         //注销注册
-        EventBus.getDefault().unregister(this);
+      //  EventBus.getDefault().unregister(this);
     }
 
 }

@@ -4,7 +4,7 @@
  * MATLAB Coder version            : 3.3
  * C/C++ source code generated on  : 31-Jan-2018 16:48:49
  */
-#include "com_lzhz_lxh_sleepmonitor_tools_jni_JNIUtils.h"
+
 #ifndef DETECT0131_H
 #define DETECT0131_H
 
@@ -18,7 +18,7 @@
 #include "detect0131_types.h"
 
 /* Function Declarations */
-extern void Java_com_lzhz_lxh_sleepmonitor_tools_jni_JNIUtils_detect0131(double raw_data[30000], double *HBR, double *RES_R,
+extern void detect0131(double raw_data[30000], double *HBR, double *RES_R,
   double HD[300], double RD[300], double snore[3000]);
 
 #endif
